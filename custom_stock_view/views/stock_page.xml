@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="stock_page" name="Stock Page">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <style>
+                        .custom_selected{
+                        background-color: #a3a3a3;
+                        }
+                    </style>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="row" style="display: flex;
+                                            justify-content: space-between;">
+                        <div style="margin-bottom: 10px;
+                                    width: 300px;
+                                    height: 30px;">
+                            <input id="search_input" type="text"
+                                   placeholder="Search" style="height: 33px;
+                                                               width: 310px;"/>
+                        </div>
+                        <div style="margin-bottom: 10px;
+                                    width: 300px;
+                                    height: 30px;">
+                            <div style="width: 200px;
+                                        margin-left: 39%;
+                                        display:flex;
+                                        font-size: 18px;">
+                                <p id="today_date"/>&amp;nbsp
+                                <p id="updatetime"/></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="width: 100%;
+                                                  height:100%;
+                                                  max-height: 100px;">
+                        <t t-call="custom_stock_view.selected_stock"/>
+                    </div>
+                    <div class="col-md-12" style="width: 100%;
+                                                  height:100%;
+                                                  max-height: 500px;
+                                                  overflow-y: auto;
+                                                  border: 1px solid;">
+                        <t t-call="custom_stock_view.stock_details"/>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+            <script>
+                setInterval(function(){
+                    document.getElementById("updatetime").innerHTML = (new Date()).toLocaleTimeString();
+                    let currentDate = new Date().toLocaleDateString()
+                    document.getElementById("today_date").innerHTML = currentDate;
+                }, 1000);
+            </script>
+        </t>
+    </template>
+    <template id="stock_details" name="Stock Details">
+        <div id="search_stock">
+            <style>
+                .custom_selected{
+                    background-color: #a3a3a3;
+                }
+            </style>
+            <table class="table" id="example">
+                <thead>
+                    <tr style="border-bottom: 2px solid;">
+                        <th align="">Name</th>
+                        <th align="">Category</th>
+                        <th align="">Location</th>
+                        <th align="">Available Quantity</th>
+                    </tr>
+                </thead>
+                <tbody style="cursor: pointer;">
+                    <t t-foreach="stocks" t-as="stock">
+                        <tr class="stock_row" t-att-data-value="stock['id']">
+                            <td align="">
+                                <t t-esc="stock['name']"/>
+                            </td>
+                            <td align="">
+                                <t t-esc="stock['category']"/>
+                            </td>
+                            <td align="">
+                                <t t-esc="stock['warehouse']"/>
+                            </td>
+                            <td align="">
+                                <t t-esc="stock['available_qty']"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </template>
+    <template id="selected_stock" name="Selected Stock">
+        <div id="selected_stock_div" style="background-color: #645a5a;
+                                            color: white;
+                                            margin-bottom: 13px;
+                                            font-size: 16px;
+                                            border-radius: 5px;">
+            <t t-foreach="selected" t-as="val">
+                <div class="container">
+                    <i id="hide_display" class="fa fa-times" style="margin-left: 98%;
+                                                                    padding-top: 10px;
+                                                                    cursor: pointer"/>
+                <div class="row">
+                    <div class="col" style="margin-left: 15%; margin-top: -4px;">Product Name : <t t-esc="val['name']"/></div>
+                    <div class="col" style="margin-left: 15%; margin-top: -4px;">Category : <t t-esc="val['category']"/></div>
+                </div>
+                 <div class="row">
+                    <div class="col" style="margin-left: 15%; margin-bottom: 10px;">Location : <t t-esc="val['warehouse']"/></div>
+                    <div class="col" style="margin-left: 15%; margin-bottom: 10px;">Available Quantity : <t t-esc="val['available_qty']"/></div>
+                </div>
+                </div>
+            </t>
+        </div>
+    </template>
+</odoo>

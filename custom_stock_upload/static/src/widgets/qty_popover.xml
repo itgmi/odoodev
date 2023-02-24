@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template id="template" xml:space="preserve">
+    <t t-name="custom_stock_upload.QtyDetailPopOver"
+       t-inherit="sale_stock.QtyDetailPopOver" t-inherit-mode="extension"
+       owl="1">
+        <xpath expr="//table/tbody" position="inside">
+             <tr>
+                        <td><strong>Vendors Stock</strong><br/></td>
+                 <td><b t-out='props.record.data.stock_available'/>
+                     <t t-out='props.record.data.product_uom[1]'/></td>
+                    </tr>
+        </xpath>
+    </t>
+</template>

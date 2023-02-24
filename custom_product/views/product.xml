@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_temp_view_custom" model="ir.ui.view">
+        <field name="name">product.temp.view.custom</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+        <field name="barcode" position="after">
+            <field name="mlm"/>
+            <field name="dashless_code"/>
+            <field name="brand"/>
+            <field name="long_default_code"/>
+        </field>
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page name="E-Commerce" string="E Commerce">
+                    <group>
+                        <group string="Links">
+                            <field name="datasheet_url"/>
+                            <field name="technical_info_url"/>
+                            <field name="manual_url"/>
+                            <field name="support_url"/>
+                            <field name="product_downloads_url"/>
+                            <field name="image_url"/>
+                        </group>
+                        <group string="Description">
+                            <field name="ecommerce_description"/>
+                        </group>
+                    </group>
+                    <group string="">
+                        <field name="related_product_ids"  widget="many2many_tags"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_prod_view_custom" model="ir.ui.view">
+        <field name="name">product.prod.view.custom</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+        <field name="barcode" position="after">
+            <field name="mlm"/>
+            <field name="dashless_code"/>
+            <field name="brand"/>
+            <field name="long_default_code"/>
+        </field>
+        </field>
+    </record>
+    <record id="product_website_view_custom" model="ir.ui.view">
+        <field name="name">product.website.view.custom</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="website_sale.product_template_form_view"/>
+        <field name="arch" type="xml">
+        <field name="website_id" position="after">
+            <field name="allowed_website_ids" widget="many2many_tags"/>
+        </field>
+        </field>
+    </record>
+    <record id="product_tree_view_custom" model="ir.ui.view">
+        <field name="name">product.tree.view.custom</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_open_label_layout']" position="after">
+                <button string="Quote" type="action" name="%(custom_product.create_quotation_wizard_action)d"/>
+                <button string="RFQ" type="action" name="%(custom_product.create_rfq_wizard_action)d"/>
+            </xpath>
+        <field name="website_id" position="after">
+            <field name="allowed_website_ids" widget="many2many_tags" optional="hide"/>
+        </field>
+        </field>
+    </record>
+     <record id="sale_order_view_custom" model="ir.ui.view">
+        <field name="name">sale.order.view.custom</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+        <xpath expr="/form/sheet/notebook/page/field[@name='order_line']//field[@name='product_template_id']" position="after">
+            <field name="related_product_ids" widget="many2many_tags"/>
+        </xpath>
+        </field>
+    </record>
+</odoo>

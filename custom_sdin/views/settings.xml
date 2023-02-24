@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form_sdin" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sdin
+        </field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="15"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" string="SDIN"
+                     id="custom_sdin" data-key="custom_sdin">
+                    <h2>Configuration</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="sdin">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">SDIN Url</span>
+                                <div class="text-muted">
+                                    <field name="url"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="affiliate">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Customer Number SAP
+                                </span>
+                                <div class="text-muted">
+                                    <field name="customer_nymber_SAP"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="sdin">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Encryption Key</span>
+                                <div class="text-muted">
+                                    <field name="encryption_key"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="affiliate">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">IV
+                                </span>
+                                <div class="text-muted">
+                                    <field name="iv"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="sdin">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Category</span>
+                                <div class="text-muted">
+                                    <field name="category"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="affiliate">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Frequency(Hour)
+                                </span>
+                                <div class="text-muted">
+                                    <field name="frequency"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="sdin">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Store Location</span>
+                                <div class="text-muted">
+                                    <field name="store_location"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="affiliate">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Store Name
+                                </span>
+                                <div class="text-muted">
+                                    <field name="store_name"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2> </h2>
+                    <div class="row mt16 o_settings_container"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="sdin_config_settings_action"
+            model="ir.actions.act_window">
+        <field name="name">SDIN Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form_sdin"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'sdin', 'bin_size': False}
+        </field>
+    </record>
+</odoo>

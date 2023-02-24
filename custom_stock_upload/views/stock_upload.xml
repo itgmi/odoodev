@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="portal_stocks_upload" name="Show Stocks Upload"
+              customize_show="True" inherit_id="portal.portal_my_home"
+              priority="80">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="after">
+            <style>
+                .modal-custom {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                padding-top: 100px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0,0.4);
+                }
+                .modal-cust-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 23%;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 0.3rem;
+                }
+                .close {
+                color: #aaaaaa;
+                margin-left: 95%;
+                font-size: 20px;
+                font-weight: bold;
+                }
+                .close:hover,
+                .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+                }
+            </style>
+            <t t-if="user_id.upload_stock">
+                <t t-if="user_id.location_id">
+                    <button id="myBtn" class="btn btn-primary"
+                            style="margin-top:10px;">Upload Stocks
+                    </button>
+                    <div id="myModal" class="modal-custom">
+                        <div class="modal-cust-content">
+                            <span class="close">X</span>
+<!--                            <i class="fa fa-download">-->
+<!--                                <button id="download_template" name="download_sample_file"-->
+<!--                                        class="btn btn-link">Download Upload-->
+<!--                                    Stocks-->
+<!--                                    Template .-->
+<!--                                </button>-->
+<!--                            </i>-->
+                            <div style="display:flex;">
+                                <label for="myfile">Select a file:</label>
+                                <input type="file" id="myfile" name="myfile"
+                                       accept=".xlsx,.xlx"
+                                       required="required"/>
+                            </div>
+                            <div id="error_div" style="display:none;color: red;">
+                                Choose Valid file to upload stocks
+                            </div>
+                            <div style="display:flex;justify-content: flex-end;">
+                                <button id="upload_stocks"
+                                        class="btn btn-primary"
+                                        style="margin-top:10px;">Upload
+                                </button>
+                                <button id="cancel_upload"
+                                        class="btn btn-secondary"
+                                        style="margin-top:10px;margin-left: 10px;">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </xpath>
+    </template>
+</odoo>

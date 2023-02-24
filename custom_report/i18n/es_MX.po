@@ -1,0 +1,31 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-24 18:13+0000\n"
+"PO-Revision-Date: 2023-02-24 18:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_report
+#: model_terms:ir.ui.view,arch_db:custom_report.add_field_report_purchaseorder_document_inherit
+msgid "<strong>Payment Policy:</strong>"
+msgstr "<strong>metodo de pago:</strong>"
+
+#. module: custom_report
+#: model_terms:ir.ui.view,arch_db:custom_report.add_field_report_purchaseorder_document_inherit
+msgid "<strong>Payment Way:</strong>"
+msgstr "<strong>forma de pago:</strong>"
+
+#. module: custom_report
+#: model_terms:ir.ui.view,arch_db:custom_report.add_field_report_purchaseorder_document_inherit
+msgid "<strong>Usage:</strong>"
+msgstr "<strong>uso:</strong>"

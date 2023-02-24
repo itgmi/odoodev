@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="portal_stocks_url" name="Show Stocks Url"
+              customize_show="True" inherit_id="portal.portal_my_home"
+              priority="80">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Stocks</t>
+                <t t-set="url" t-value="'/Stocks'"/>
+                <t t-set="placeholder_count" t-value="'stock_count'"/>
+            </t>
+        </xpath>
+    </template>
+    <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'stocks_view'"
+                class="breadcrumb-item">
+                Stocks
+            </li>
+            <li t-if="page_name == 'stocks_view'">
+                <div style="margin-left: 30%;">
+                    <input id="portal_stock_search" type="text"
+                           placeholder="Search"/>
+                </div>
+            </li>
+            <li t-if="page_name == 'stocks_single_view'"
+                class="breadcrumb-item">
+                <a t-attf-href="/Stocks">Stocks</a>
+            </li>
+            <li t-if="page_name == 'stocks_single_view'"
+                class="breadcrumb-item active">
+                <t t-esc="name"/>
+            </li>
+        </xpath>
+    </template>
+    <template id="portal_stocks" name="Stocks">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Stocks</t>
+            </t>
+            <t t-call="custom_stock_view.portal_search_stock"/>
+        </t>
+    </template>
+    <template id="portal_single_stocks" name="portal single stocks">
+        <t t-call="portal.portal_layout">
+            <br/>
+            <div id="stock_content" class="col-12 col-lg" style="width: 100%;
+                                                                    height: 280px;
+                                                                    background-color: white;
+                                                                    border: 1px solid #e7e3e3;
+                                                                    border-radius: 3px;">
+                <div class="row" style="background-color: #584848;">
+                    <div style="width: 300px;">
+                        <t t-foreach="product" t-as="i">
+                            <img t-attf-src="data:image/png;base64,{{i['image']}}"
+                                 alt="image"
+                                 style="width: 280px; height: 277px;"/>
+                        </t>
+                    </div>
+                    <div style="background-color: #584848;
+                                            color: white;
+                                            width: 40%;
+                                            height: 277px;">
+                        <div style="font-size: 25px;">
+                            Product :
+                            <t t-esc="name"/>
+                        </div>
+                        <div style="margin-top: 40px;
+                                    font-size: 19px;">
+                            <div>
+                                <div>Location :
+                                    <t t-esc="location"/>
+                                </div>
+                                <div>Available Quantity :
+                                    <t t-esc="Quantity"/>
+                                </div>
+                                <div>Category :
+                                    <t t-esc="category"/>
+                                </div>
+                            </div>
+                            <div>
+                                <div>MLM :
+                                    <t t-esc="mlm"/>
+                                </div>
+                                <div>Dashless Code :
+                                    <t t-esc="dashless"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="portal_search_stock" name="portal search stock">
+        <div id="stock_portal_search">
+            <t t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th class="text-left">Product Name</th>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Location</th>
+                        <th class="text-center">AvailableQuantity</th>
+                    </tr>
+                </thead>
+                <t t-foreach="records" t-as="record">
+                    <tr>
+                        <td>
+                            <a t-att-href="record['url']">
+                                <t t-esc="record['name']"/>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <span t-esc="record['category']"/>
+                        </td>
+                        <td class="text-center">
+                            <span t-esc="record['warehouse']"/>
+                        </td>
+                        <td class="text-center">
+                            <span t-esc="record['available_qty']"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </div>
+    </template>
+</odoo>

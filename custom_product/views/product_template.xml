@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_inherit" inherit_id="website_sale.product"
+              name="Product Inherit">
+        <xpath expr="//div[@id='o_product_terms_and_share']" position="after">
+            <p></p>
+            <div style="font-size: 20px;">
+                <div>
+                    <i class="fa fa-book"/>
+                    <a t-att-href="product.datasheet_url"
+                       style="margin-left: 2%;">Datasheet
+                    </a>
+                </div>
+                <div>
+                    <i class="fa fa-building"/>
+                    <a t-att-href="product.technical_info_url"
+                       style="margin-left: 2%;">Technical
+                    </a>
+                </div>
+                <div>
+                    <i class="fa fa-id-card-o"/>
+                    <a t-att-href="product.manual_url"
+                       style="margin-left: 2%;">Manual
+                    </a>
+                </div>
+                <div>
+                    <i class="fa fa-question-circle"/>
+                    <a t-att-href="product.support_url"
+                       style="margin-left: 2%;">Support
+                    </a>
+                </div>
+                <div>
+                    <i class="fa fa-download"/>
+                    <a t-att-href="product.product_downloads_url"
+                       style="margin-left: 2%;">Download
+                    </a>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='product_detail_main']" position="after">
+            <div t-attf-class="col-lg-#{image_cols[0]} mt-lg-4 position-relative">
+                <div style="padding-left: 13%;
+                            padding-right: 15%;
+                            font-size: 20px;">
+                    <p>
+                        <t t-esc="product.ecommerce_description"/>
+                    </p>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

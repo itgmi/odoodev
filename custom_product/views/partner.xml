@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_partner_address_custom" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.custom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='child_ids']" position="after">
+                <field name="city_id" invisible="1"/>
+                <field name="l10n_mx_edi_locality" invisible="1"/>
+                <field name="l10n_mx_edi_locality_id" invisible="1"/>
+                <field name="l10n_mx_edi_colony_code" invisible="1"/>
+                <field name="l10n_mx_edi_colony" invisible="1"/>
+                <field name="street_number" invisible="1"/>
+                <field name="street_number2" invisible="1"/>
+                <field name="street2" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='child_ids']" position="attributes">
+                <attribute name="context">{'default_city_id': city_id,
+                    'default_l10n_mx_edi_locality': l10n_mx_edi_locality,
+                    'default_l10n_mx_edi_locality_id': l10n_mx_edi_locality_id,
+                    'default_l10n_mx_edi_colony_code': l10n_mx_edi_colony_code,
+                    'default_l10n_mx_edi_colony': l10n_mx_edi_colony,
+                    'default_street_number': street_number,
+                    'default_street_number2': street_number2,
+                    'default_zip': zip,
+                    'default_street2': street2}
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='state_id']" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_open': True, 'no_quick_create': True}
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="channel_id"
+                       options="{'no_create_edit': True, 'no_create': True}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="res_partner_address_mx_stock_custom" model="ir.ui.view">
+        <field name="name">res.partner.mx.stock.form.inherit.custom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="l10n_mx_edi_stock.mx_partner_operator_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='l10n_mx_edi_operator_licence']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="l10n_mx_edi_curp_hide_res_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.l10n_mx_edi_curp_hide
+        </field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="l10n_mx_edi_extended.l10n_mx_edi_inh_res_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='l10n_mx_edi_curp']"
+                   position="attributes">
+                <attribute name="attrs">{'invisible': [('company_type', '=',
+                    'company')]}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="res_partner_address_mx_extend_custom" model="ir.ui.view">
+        <field name="name">res.partner.mx.extend.form.inherit.custom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="base_address_extended.address_street_extended_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='city_id']" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_open': True, 'no_quick_create': True}
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='state_id']" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_open': True, 'no_quick_create': True}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="res_partner_address_regime_custom" model="ir.ui.view">
+        <field name="name">res.partner.regime.form.inherit.custom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='property_account_position_id']"
+                   position="after">
+                <field name="l10n_mx_edi_fiscal_regime"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="res_partner_address_street_custom" model="ir.ui.view">
+        <field name="name">res.partner.street.form.inherit.custom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="base_address_extended.address_street_extended_city_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='city_id']" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_open': True, 'no_quick_create': True}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="res_partner_address_mx_custom" model="ir.ui.view">
+        <field name="name">res.partner.mx.form.inherit.custom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="l10n_mx_edi_extended.mx_partner_address_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="." position="replace">
+                <form>
+                    <div class="o_address_format">
+                        <field name="country_enforce_cities" invisible="1"/>
+                        <field name="parent_id" invisible="1"/>
+                        <field name="type" invisible="1"/>
+                        <field name="street" placeholder="Street..." class="o_address_street oe_read_only"/>
+                        <div class="oe_edit_only o_row">
+                            <field name="street_name" placeholder="Street" style="flex: 3 1 auto"
+                                   attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                            <span> </span>
+                            <field name="street_number" placeholder="House #" style="flex: 1 1 auto"
+                                   attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                            <span> - </span>
+                            <field name="street_number2" placeholder="Door #" style="flex: 1 1 auto"
+                                   attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                        </div>
+                        <field name="street2" placeholder="Street 2..." class="o_address_street"
+                               attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                        <div class="o_address_street">
+                            <field name="l10n_mx_edi_colony" placeholder="Colony..." style="flex: 2 1 auto"
+                                   attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                            <span> </span>
+                            <field name="l10n_mx_edi_colony_code" placeholder="Colony Code..." style="flex: 2 1 auto"
+                                   attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                        </div>
+                        <div class="o_address_street">
+                            <field name="l10n_mx_edi_locality_id"
+                                   placeholder="Locality..."
+                                   domain="[('state_id','=', state_id)]"
+                                   options='{"no_create": True}'
+                                   attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                            <field name="l10n_mx_edi_locality"
+                                   attrs="{'invisible': ['|', ('l10n_mx_edi_locality_id', '!=', False), ('l10n_mx_edi_locality', 'in', ['', False ])],
+                                           'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                                   placeholder="Locality..."/>
+                        </div>
+                        <field name="country_id"
+                               placeholder="Country"
+                               class="o_address_country"
+                               attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                               options='{"no_open": True, "no_create": True}'/>
+                         <field name="state_id"
+                               class="o_address_country"
+                               placeholder="State"
+                               options="{'no_open': True, 'no_quick_create': True}"
+                               attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                               context="{'default_country_id': country_id}"/>
+                        <field name="city_id"
+                               placeholder="City"
+                               class="o_address_country"
+                               domain="[('country_id', '=', country_id)]"
+                               attrs="{'invisible': [('country_enforce_cities', '=', False)], 'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"
+                               context="{'default_country_id': country_id, 'default_state_id': state_id, 'default_zipcode': zip}"/>
+                        <field name="city"
+                               placeholder="City"
+                               class="o_address_city"
+                               attrs="{'invisible': [('country_enforce_cities', '=', True), '|', ('city_id', '!=', False), ('city', 'in', ['',False])],
+                                       'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                        <field name="zip" placeholder="ZIP" class="o_address_zip"
+                               attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                    </div>
+                </form>
+            </xpath>
+        </field>
+    </record>
+    <record id="res_partner_address_mx_custom_inherit" model="ir.ui.view">
+        <field name="name">res.partner.mx.form.inherit.custom.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="custom_product.res_partner_address_mx_custom"/>
+        <field name="arch" type="xml">
+            <field name="l10n_mx_edi_colony_code" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="l10n_mx_edi_locality_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <xpath expr="//field[@name='city_id']" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_open': True, 'no_quick_create': True}
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='state_id']" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_open': True, 'no_quick_create': True}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
