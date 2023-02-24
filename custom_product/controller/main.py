@@ -4,7 +4,7 @@ from odoo.http import request
 
 class CustomRoute(http.Controller):
 
-    @http.route('/<website_name>', type='http',
+    @http.route('/website/<website_name>', type='http',
                 auth="public", website=True)
     def website_force(self, website_name, path='/shop'):
         """ The goal of this controller is to make different route for
