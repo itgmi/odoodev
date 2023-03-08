@@ -1,0 +1,21 @@
+{
+    'name': "custom Price",
+    'summary': """Custom Price""",
+    'version': '16.0.1.1.3',
+    'description': """Custom Price""",
+    'category': '',
+    'author': '',
+    'company': '',
+    'website': "",
+    'depends': ['base', 'product', 'sale', 'account', 'delivery'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/upload_docs.xml',
+        'views/product.xml',
+        'views/sale_order.xml',
+    ],
+    'license': 'LGPL-3',
+    'installable': True,
+    'auto_install': False,
+    'application': False,
+}

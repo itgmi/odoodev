@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="add_field_report_sale_order_inherit"
+              inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="inside">
+            <div t-if="doc.customer_order" class="col-auto col-3 mw-100 mb-2">
+                    <strong>Customer Order:</strong>
+                    <p class="m-0" t-field="doc.customer_order"/>
+                </div>
+        </xpath>
+    </template>
+</odoo>

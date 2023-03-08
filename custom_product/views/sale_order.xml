@@ -5,11 +5,66 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='partner_invoice_id']" position="attributes">
+            <xpath expr="//field[@name='partner_invoice_id']"
+                   position="attributes">
                 <attribute name="options">{'no_create_edit': True, 'no_create':
                     True}
                 </attribute>
                 <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='product_uom_qty']"
+                   position="attributes">
+                <attribute name="widget">integer</attribute>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='product_id']"
+                   position="replace">
+                                                <field
+                                    name="product_id"
+                                    attrs="{
+                                        'readonly': [('product_updatable', '=', False)],
+                                        'required': [('display_type', '=', False)],
+                                    }"
+                                    force_save="1"
+                                    context="{
+                                        'partner_id': parent.partner_id,
+                                        'quantity': product_uom_qty,
+                                        'pricelist': parent.pricelist_id,
+                                        'uom':product_uom,
+                                        'company_id': parent.company_id,
+                                        'default_lst_price': price_unit,
+                                        'default_description_sale': name
+                                    }"
+                                    options="{
+                                        'no_open': True,
+                                        'no_quick_create': True,
+                                    }"
+                                    domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                    widget="sol_product_many2one"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='product_template_id']"
+                   position="replace">
+                                                <field name="product_template_id"
+                                    string="Product"
+                                    invisible="1"
+                                    attrs="{
+                                        'readonly': [('product_updatable', '=', False)],
+                                        'required': [('display_type', '=', False)],
+                                    }"
+                                    context="{
+                                        'partner_id': parent.partner_id,
+                                        'quantity': product_uom_qty,
+                                        'pricelist': parent.pricelist_id,
+                                        'uom':product_uom,
+                                        'company_id': parent.company_id,
+                                        'default_list_price': price_unit,
+                                        'default_description_sale': name
+                                    }"
+                                    options="{
+                                        'no_open': True,
+                                        'no_quick_create': True,
+                                    }"
+                                    domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                    widget="sol_product_many2one"/>
             </xpath>
         </field>
     </record>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <record id="res_partner_schedule_custom" model="ir.ui.view">
+        <field name="name">res.partner.schedule.form.inherit.custom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="schedule_for_delivery" attrs="{'invisible': [('type', '!=', 'delivery')]}"/>
+            </field>
+            <xpath expr="//page[@name='contact_addresses']//form//field[@name='company_id']" position="after">
+                <field name="schedule_for_delivery" attrs="{'invisible': [('type', '!=', 'delivery')]}"/>
+            </xpath>
+        </field>
+     </record>
+</odoo>

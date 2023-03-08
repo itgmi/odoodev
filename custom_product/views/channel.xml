@@ -19,4 +19,23 @@
               parent="sale.menu_sale_config"
               sequence="110"
               action="channels_gr_model_action"/>
+     <record id="types_gr_model_tree" model="ir.ui.view">
+        <field name="name">types gr</field>
+        <field name="model">types.gr</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+     <record id="types_gr_model_action" model="ir.actions.act_window">
+        <field name="name">Types</field>
+        <field name="res_model">types.gr</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem id="menu_gr_types"
+              name="Types"
+              parent="sale.menu_sale_config"
+              sequence="120"
+              action="types_gr_model_action"/>
 </odoo>

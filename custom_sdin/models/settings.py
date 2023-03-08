@@ -9,6 +9,7 @@ import ast
 class ConfigSetting(models.TransientModel):
     _inherit = 'res.config.settings'
 
+    active_sdin = fields.Boolean('Active', config_parameter='custom_sdin.active_sdin')
     url = fields.Char('SDIN Url', config_parameter='custom_sdin.url')
     customer_nymber_SAP = fields.Char('Customer Nymber SAP',
                                       config_parameter=
@@ -101,7 +102,19 @@ class ConfigSetting(models.TransientModel):
 
     @api.constrains('frequency')
     def change_interval(self):
-        cron_job = self.env['ir.cron'].search([('name', '=', 'SDIN Cron Job')])
+        cron_job = self.env.ref('custom_sdin.sdin_cron')
         cron_job.write({
             'interval_number': int(self.frequency)
         })
+
+    @api.constrains('active_sdin')
+    def change_active(self):
+        cron_job = self.env.ref('custom_sdin.sdin_cron')
+        if self.active_sdin:
+            cron_job.write({
+                'active': True
+            })
+        else:
+            cron_job.write({
+                'active': False
+            })

@@ -86,8 +86,18 @@ class ResPartner(models.Model):
         selection=[('PPD', 'PPD'),
                    ('PUE', 'PUE')])
     channel_id = fields.Many2one('channels.gr')
+    types_id = fields.Many2one('types.gr', 'Type')
     city_id = fields.Many2one(comodel_name='res.city', string='City ID',
                               domain="[('state_id', '=', state_id)]")
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super().create(vals_list)
+        if res:
+            for rec in res:
+                if rec.parent_id and rec.type == 'invoice':
+                    rec.unlink()
+        return res
 
     @api.onchange('vat')
     def _on_change_vat(self):

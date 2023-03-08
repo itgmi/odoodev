@@ -6,8 +6,15 @@
         <xpath expr="//table/tbody" position="inside">
              <tr>
                         <td><strong>Vendors Stock</strong><br/></td>
-                 <td><b t-out='props.record.data.stock_available'/>
-                     <t t-out='props.record.data.product_uom[1]'/></td>
+                 <td><b t-out='props.record.data.stock_available'/> <t t-out='props.record.data.product_uom[1]'/></td>
+                    </tr>
+            <tr>
+                        <td><strong>1st Quoted Price</strong><br/></td>
+                 <td><b t-out='props.record.data.quoted_price_one'/> <t t-out='props.record.data.quote_currency_one'/></td>
+                    </tr>
+            <tr>
+                        <td><strong>2nd Quoted Price</strong><br/></td>
+                 <td><b t-out='props.record.data.quoted_price_two'/> <t t-out='props.record.data.quote_currency_two'/></td>
                     </tr>
         </xpath>
     </t>

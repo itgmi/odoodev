@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="create_csf_wizard_form" model="ir.ui.view">
+        <field name="name">create.csf.form</field>
+        <field name="model">create.csf</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="type" widget="radio"/>
+                        <field name="file_name" string="File Name" invisible="1"/>
+                        <field name="file" nolabel="0" filename="file_name"/>
+                    </group>
+                    <footer>
+                        <button name="create_csf" type="object"
+                                string="Create" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary"
+                                special="cancel" data-hotkey="z"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

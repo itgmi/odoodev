@@ -35,6 +35,18 @@
             <xpath expr="//field[@name='vat']" position="after">
                 <field name="channel_id"
                        options="{'no_create_edit': True, 'no_create': True}"/>
+                <field name="types_id"
+                       options="{'no_create_edit': True, 'no_create': True}"/>
+            </xpath>
+            <xpath expr="//field[@name='title']" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_open': True, 'no_quick_create': True}
+                </attribute>
+            </xpath>
+            <xpath expr="//page[@name='contact_addresses']//form//field[@name='title']" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_open': True, 'no_quick_create': True}
+                </attribute>
             </xpath>
         </field>
     </record>

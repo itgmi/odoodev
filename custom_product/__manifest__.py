@@ -1,7 +1,7 @@
 {
     'name': "custom product",
     'summary': """Custom Product""",
-    'version': '16.0.1.4.5',
+    'version': '16.0.3.5.5',
     'description': """Custom Product""",
     'category': '',
     'author': '',
@@ -11,7 +11,7 @@
                 'website_sale', 'website', 'l10n_mx_edi_extended',
                 'account', 'l10n_mx_edi', 'delivery', 'purchase',
                 'l10n_mx_edi_stock', 'base_address_extended',
-                'account', 'l10n_mx_edi_40', 'base_address_extended'],
+                'account', 'l10n_mx_edi_40'],
     'data': [
         'security/ir.model.access.csv',
         'views/quotation_wizard.xml',

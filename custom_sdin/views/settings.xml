@@ -15,6 +15,18 @@
                         <div class="col-12 col-lg-6 o_setting_box"
                              id="sdin">
                             <div class="o_setting_right_pane">
+                                <span class="o_form_label">Active</span>
+                                <div class="text-muted">
+                                    <field name="active_sdin" widget="boolean_toggle"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="sdin">
+                            <div class="o_setting_right_pane">
                                 <span class="o_form_label">SDIN Url</span>
                                 <div class="text-muted">
                                     <field name="url"/>

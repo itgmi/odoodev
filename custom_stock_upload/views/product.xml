@@ -30,7 +30,22 @@
             <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_uom_qty']"
                    position="after">
                 <field name="stock_available" invisible="1"/>
+                <field name="quoted_price_one" invisible="1"/>
+                <field name="quote_currency_one" invisible="1"/>
+                <field name="quoted_price_two" invisible="1"/>
+                <field name="quote_currency_two" invisible="1"/>
             </xpath>
+        </field>
+    </record>
+    <record id="product_temp_view_custom_warning" model="ir.ui.view">
+        <field name="name">product.temp.view.custom.warning</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id"
+               ref="sale.product_template_form_view_sale_order_button"/>
+        <field name="arch" type="xml">
+            <field name="sale_line_warn" position="after">
+                <field name="prices_warning"/>
+            </field>
         </field>
     </record>
 </odoo>

@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_create_quotation,access.create.quotation,model_create_quotation,base.group_user,1,1,1,1
 access_create_rfq,access.create.rfq,model_create_rfq,base.group_user,1,1,1,1
 access_channels_gr,access.channels.gr,model_channels_gr,base.group_user,1,1,1,1
+access_types_gr,access.types.gr,model_types_gr,base.group_user,1,1,1,1
