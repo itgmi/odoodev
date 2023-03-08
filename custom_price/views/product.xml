@@ -22,4 +22,17 @@
             </xpath>
         </field>
     </record>
+    <record id="sale.product_template_action" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,activity</field>
+        <field name="view_id" ref="product.product_template_tree_view"/>
+    </record>
+    <record id="account.res_partner_action_customer" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+    <record id="stock.product_template_action_product" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+    <record id="purchase.product_normal_action_puchased" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,activity</field>
+    </record>
 </odoo>

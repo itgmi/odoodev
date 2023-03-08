@@ -159,6 +159,9 @@
             <field name="website_id" position="after">
                 <field name="allowed_website_ids" widget="many2many_tags"/>
             </field>
+            <field name="website_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
         </field>
     </record>
     <record id="product_tree_view_custom" model="ir.ui.view">

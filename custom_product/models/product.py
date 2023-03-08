@@ -32,7 +32,7 @@ class ProductTemp(models.Model):
     related_product_ids = fields.Many2many('product.product', help='Selected '
                                            'related products to show in '
                                            'sale order line')
-    brand = fields.Char('Brand', readonly=True, store=True)
+    brand = fields.Char('Brand',compute='_on_change_categ_id', store=True)
     long_default_code = fields.Char('Long Part#')
     name = fields.Char('Name', index='trigram', required=True, translate=True, readonly=False, store=True, compute='_name_perfect')
     description_gr = fields.Text('Description')
@@ -94,22 +94,23 @@ class ProductTemp(models.Model):
             self.description_sale = self.description_gr
             self.description_purchase = self.description_sale
 
-    @api.onchange('categ_id')
+    @api.depends('categ_id')
     def _on_change_categ_id(self):
-        if self.categ_id:
-            if self.categ_id.complete_name:
-                name = self.categ_id.complete_name
-                match = re.search(r"(?<=Active)\s*/\s*(\w+(?:\s+\w+)*)", name)
-                if match:
-                    siemens = match.group(1)
-                    self.brand = siemens
-                else:
-                    match = re.search(r"(?<=Obsoleto)\s*/\s*(\w+(?:\s+\w+)*)", name)
+        for rec in self:
+            if rec.categ_id:
+                if rec.categ_id.complete_name:
+                    name = rec.categ_id.complete_name
+                    match = re.search(r"(?<=Active)\s*/\s*(\w+(?:\s+\w+)*)", name)
                     if match:
                         siemens = match.group(1)
-                        self.brand = siemens
+                        rec.brand = siemens
                     else:
-                        self.brand = ''
+                        match = re.search(r"(?<=Obsoleto)\s*/\s*(\w+(?:\s+\w+)*)", name)
+                        if match:
+                            siemens = match.group(1)
+                            rec.brand = siemens
+                        else:
+                            rec.brand = ''
 
     @api.depends('brand', 'default_code', 'long_default_code')
     def _name_perfect(self):

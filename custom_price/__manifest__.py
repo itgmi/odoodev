@@ -7,7 +7,8 @@
     'author': '',
     'company': '',
     'website': "",
-    'depends': ['base', 'product', 'sale', 'account', 'delivery'],
+    'depends': ['base', 'product', 'sale', 'account', 'delivery', 'stock',
+                'purchase'],
     'data': [
         'security/ir.model.access.csv',
         'views/upload_docs.xml',
