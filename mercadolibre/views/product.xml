@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_temp_view_custom_mer" model="ir.ui.view">
+        <field name="name">product.temp.view.custom_mer</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id"
+               ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="MercadoLibre" name="mercado_libre">
+                    <button class="btn btn-primary" string="Validate" name="validate_product" type="object"/>
+                    <group>
+                        <group>
+                            <field name="mer_title"/>
+                            <field name="default_code" string="SKU"/>
+                            <field name="mer_category"/>
+                            <field name="mer_images"/>
+                            <field name="mer_upc_"/>
+                            <field name="mer_available_quantity"/>
+                            <field name="mer_price"/>
+                            <field name="mer_currency"/>
+                            <field name="mer_condition"/>
+                            <field name="mer_listing_type"/>
+                            <field name="mer_description"/>
+                        </group>
+                        <group>
+                            <field name="mer_shipping_method"/>
+                            <field name="mer_shipping_cost"/>
+                            <field name="mer_local_pickup"/>
+                            <field name="mer_warranty_type"/>
+                            <field name="mer_warranty_time"/>
+                            <field name="mer_warranty_uom"/>
+                            <field name="mer_brand"/>
+                            <field name="default_code" string="Model"/>
+                            <field name="mer_mlm"/>
+                            <field name="response"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

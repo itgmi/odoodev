@@ -1,0 +1,21 @@
+{
+    'name': 'MercadoLibre',
+    'version': '16.0.1.0.7',
+    'summary': """MercadoLibre""",
+    'description': 'MercadoLibre',
+    'category': '',
+    'author': '',
+    'company': '',
+    'website': "",
+    'depends': ['base', 'product', 'stock', 'delivery', 'custom_product'],
+    'data': [
+        'views/config.xml',
+        'data/refresh_action.xml',
+        'views/cron.xml',
+        'views/product.xml',
+    ],
+    'license': 'LGPL-3',
+    'installable': True,
+    'auto_install': False,
+    'application': False,
+}

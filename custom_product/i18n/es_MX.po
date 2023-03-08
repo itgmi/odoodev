@@ -1,0 +1,725 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-03 16:52+0000\n"
+"PO-Revision-Date: 2023-03-03 16:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "<span> - </span>"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__g01
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__g01
+msgid "Acquisition of merchandise"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__allowed_website_ids
+#: model:ir.model.fields,field_description:custom_product.field_product_template__allowed_website_ids
+msgid "Allowed Website"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__brand
+#: model:ir.model.fields,field_description:custom_product.field_product_template__brand
+msgid "Brand"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.create_quotation_wizard
+#: model_terms:ir.ui.view,arch_db:custom_product.create_rfq_wizard
+msgid "Cancel"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_channels_gr__name
+#: model:ir.model.fields,field_description:custom_product.field_res_partner__channel_id
+#: model:ir.model.fields,field_description:custom_product.field_res_users__channel_id
+msgid "Channel"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.actions.act_window,name:custom_product.channels_gr_model_action
+#: model:ir.model,name:custom_product.model_channels_gr
+#: model:ir.ui.menu,name:custom_product.menu_gr_channels
+msgid "Channels"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "City"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_res_partner__city_id
+#: model:ir.model.fields,field_description:custom_product.field_res_users__city_id
+msgid "City ID"
+msgstr "ID de la ciudad"
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "Colony Code..."
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "Colony..."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__i04
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__i04
+msgid "Computer equipment and accessories"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__i01
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__i01
+msgid "Constructions"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model,name:custom_product.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "Country"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.create_quotation_wizard
+#: model_terms:ir.ui.view,arch_db:custom_product.create_rfq_wizard
+msgid "Create"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.actions.act_window,name:custom_product.create_quotation_wizard_action
+#: model:ir.model,name:custom_product.model_create_quotation
+#: model_terms:ir.ui.view,arch_db:custom_product.create_quotation_wizard
+msgid "Create Quotation"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.actions.act_window,name:custom_product.create_rfq_wizard_action
+#: model:ir.model,name:custom_product.model_create_rfq
+#: model_terms:ir.ui.view,arch_db:custom_product.create_rfq_wizard
+msgid "Create Rfq"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_channels_gr__create_uid
+#: model:ir.model.fields,field_description:custom_product.field_create_quotation__create_uid
+#: model:ir.model.fields,field_description:custom_product.field_create_rfq__create_uid
+#: model:ir.model.fields,field_description:custom_product.field_types_gr__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_channels_gr__create_date
+#: model:ir.model.fields,field_description:custom_product.field_create_quotation__create_date
+#: model:ir.model.fields,field_description:custom_product.field_create_rfq__create_date
+#: model:ir.model.fields,field_description:custom_product.field_types_gr__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__currency_id
+#: model:ir.model.fields,field_description:custom_product.field_product_template__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__cust_currency_id
+#: model:ir.model.fields,field_description:custom_product.field_product_template__cust_currency_id
+msgid "Cust Currency"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_create_quotation__partner_id
+#: model:ir.model.fields,field_description:custom_product.field_create_rfq__partner_id
+#: model:ir.model.fields,field_description:custom_product.field_sale_order__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__dashless_code
+#: model:ir.model.fields,field_description:custom_product.field_product_template__dashless_code
+msgid "Dashless Code"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_inherit
+msgid "Datasheet"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__datasheet_url
+#: model:ir.model.fields,field_description:custom_product.field_product_template__datasheet_url
+msgid "Datasheet Url"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_account_bank_statement_line__partner_shipping_id
+#: model:ir.model.fields,field_description:custom_product.field_account_move__partner_shipping_id
+#: model:ir.model.fields,field_description:custom_product.field_account_payment__partner_shipping_id
+#: model:ir.model.fields,field_description:custom_product.field_sale_order__partner_shipping_id
+msgid "Delivery Address"
+msgstr "Dirección de entrega"
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_account_bank_statement_line__partner_shipping_id
+#: model:ir.model.fields,help:custom_product.field_account_move__partner_shipping_id
+#: model:ir.model.fields,help:custom_product.field_account_payment__partner_shipping_id
+msgid "Delivery address for current invoice."
+msgstr "Dirección de entrega de esta factura."
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d09
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d09
+msgid "Deposits in savings accounts, premiums based on pension plans."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__description_gr
+#: model:ir.model.fields,field_description:custom_product.field_product_template__description_gr
+#: model_terms:ir.ui.view,arch_db:custom_product.product_temp_view_custom
+msgid "Description"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__i05
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__i05
+msgid "Dices, dies, molds, matrices and tooling"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_channels_gr__display_name
+#: model:ir.model.fields,field_description:custom_product.field_create_quotation__display_name
+#: model:ir.model.fields,field_description:custom_product.field_create_rfq__display_name
+#: model:ir.model.fields,field_description:custom_product.field_types_gr__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d04
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d04
+msgid "Donations"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "Door #"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_inherit
+msgid "Download"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_temp_view_custom
+msgid "E Commerce"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__ecommerce_description
+#: model:ir.model.fields,field_description:custom_product.field_product_template__ecommerce_description
+msgid "Ecommerce Description"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__datasheet_url
+#: model:ir.model.fields,help:custom_product.field_product_template__datasheet_url
+msgid "Enter datasheet url to show in product view in website."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__ecommerce_description
+#: model:ir.model.fields,help:custom_product.field_product_template__ecommerce_description
+msgid "Enter detailed description to show in product view in website."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__manual_url
+#: model:ir.model.fields,help:custom_product.field_product_template__manual_url
+msgid "Enter manual_url to show in product view in website."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__product_downloads_url
+#: model:ir.model.fields,help:custom_product.field_product_template__product_downloads_url
+msgid "Enter product_downloads_url to show in product view in website."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__support_url
+#: model:ir.model.fields,help:custom_product.field_product_template__support_url
+msgid "Enter support_url to show in product view in website."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__technical_info_url
+#: model:ir.model.fields,help:custom_product.field_product_template__technical_info_url
+msgid "Enter technical info url to show in product view in website."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d03
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d03
+msgid "Funeral expenses"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__g03
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__g03
+msgid "General expenses"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "House #"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_channels_gr__id
+#: model:ir.model.fields,field_description:custom_product.field_create_quotation__id
+#: model:ir.model.fields,field_description:custom_product.field_create_rfq__id
+#: model:ir.model.fields,field_description:custom_product.field_types_gr__id
+msgid "ID"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__image_url
+#: model:ir.model.fields,field_description:custom_product.field_product_template__image_url
+msgid "Image Url"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_account_bank_statement_line__l10n_mx_edi_payment_method_id
+#: model:ir.model.fields,help:custom_product.field_account_move__l10n_mx_edi_payment_method_id
+#: model:ir.model.fields,help:custom_product.field_account_payment__l10n_mx_edi_payment_method_id
+msgid ""
+"Indicates the way the invoice was/will be paid, where the options could be: "
+"Cash, Nominal Check, Credit Card, etc. Leave empty if unkown and the XML "
+"will show 'Unidentified'."
+msgstr ""
+"Indica la forma en que se pagó / se pagará la factura, donde las opciones "
+"podrían ser: Efectivo, Cheque nominal, Tarjeta de crédito, etc. Deje en "
+"blanco si no lo conoce y el XML mostrará 'No identificado'."
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_res_partner__l10n_mx_edi_payment_method_id_sales
+#: model:ir.model.fields,help:custom_product.field_res_partner__l10n_mx_edi_payment_method_purchase
+#: model:ir.model.fields,help:custom_product.field_res_users__l10n_mx_edi_payment_method_id_sales
+#: model:ir.model.fields,help:custom_product.field_res_users__l10n_mx_edi_payment_method_purchase
+msgid ""
+"Indicates the way the payment was/will be received, where the options could "
+"be: Cash, Nominal Check, Credit Card, etc."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_sale_order__partner_invoice_id
+msgid "Invoice Address"
+msgstr "Dirección de factura"
+
+#. module: custom_product
+#: model:ir.model,name:custom_product.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento de diario"
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_channels_gr____last_update
+#: model:ir.model.fields,field_description:custom_product.field_create_quotation____last_update
+#: model:ir.model.fields,field_description:custom_product.field_create_rfq____last_update
+#: model:ir.model.fields,field_description:custom_product.field_types_gr____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_channels_gr__write_uid
+#: model:ir.model.fields,field_description:custom_product.field_create_quotation__write_uid
+#: model:ir.model.fields,field_description:custom_product.field_create_rfq__write_uid
+#: model:ir.model.fields,field_description:custom_product.field_types_gr__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_channels_gr__write_date
+#: model:ir.model.fields,field_description:custom_product.field_create_quotation__write_date
+#: model:ir.model.fields,field_description:custom_product.field_create_rfq__write_date
+#: model:ir.model.fields,field_description:custom_product.field_types_gr__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_temp_view_custom
+msgid "Links"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "Locality..."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__long_default_code
+#: model:ir.model.fields,field_description:custom_product.field_product_template__long_default_code
+msgid "Long Part#"
+msgstr "#Parte Largo"
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d08
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d08
+msgid "Mandatory School Transportation Expenses"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_inherit
+msgid "Manual"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__manual_url
+#: model:ir.model.fields,field_description:custom_product.field_product_template__manual_url
+msgid "Manual Url"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d02
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d02
+msgid "Medical expenses for disability"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d07
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d07
+msgid "Medical insurance premiums"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d01
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d01
+msgid "Medical, dental and hospital expenses."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__mlm
+#: model:ir.model.fields,field_description:custom_product.field_product_template__mlm
+msgid "Mlm"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__name
+#: model:ir.model.fields,field_description:custom_product.field_product_template__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__i02
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__i02
+msgid "Office furniture and equipment investment"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__allowed_website_ids
+#: model:ir.model.fields,help:custom_product.field_product_template__allowed_website_ids
+msgid "Only shows product in selected websites"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__i08
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__i08
+msgid "Other machinery and equipment"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_payment_policy_purchase__ppd
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_payment_policy_sales__ppd
+msgid "PPD"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_payment_policy_purchase__pue
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_payment_policy_sales__pue
+msgid "PUE"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_temp_view_custom
+msgid "Part Number"
+msgstr "Numero de parte"
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_account_bank_statement_line__l10n_mx_edi_payment_policy
+#: model:ir.model.fields,field_description:custom_product.field_account_move__l10n_mx_edi_payment_policy
+#: model:ir.model.fields,field_description:custom_product.field_account_payment__l10n_mx_edi_payment_policy
+#: model:ir.model.fields,field_description:custom_product.field_res_partner__l10n_mx_edi_payment_policy_purchase
+#: model:ir.model.fields,field_description:custom_product.field_res_partner__l10n_mx_edi_payment_policy_sales
+#: model:ir.model.fields,field_description:custom_product.field_res_users__l10n_mx_edi_payment_policy_purchase
+#: model:ir.model.fields,field_description:custom_product.field_res_users__l10n_mx_edi_payment_policy_sales
+msgid "Payment Policy"
+msgstr "Política de pago"
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_account_bank_statement_line__l10n_mx_edi_payment_method_id
+#: model:ir.model.fields,field_description:custom_product.field_account_move__l10n_mx_edi_payment_method_id
+#: model:ir.model.fields,field_description:custom_product.field_account_payment__l10n_mx_edi_payment_method_id
+#: model:ir.model.fields,field_description:custom_product.field_res_partner__l10n_mx_edi_payment_method_id_sales
+#: model:ir.model.fields,field_description:custom_product.field_res_partner__l10n_mx_edi_payment_method_purchase
+#: model:ir.model.fields,field_description:custom_product.field_res_users__l10n_mx_edi_payment_method_id_sales
+#: model:ir.model.fields,field_description:custom_product.field_res_users__l10n_mx_edi_payment_method_purchase
+msgid "Payment Way"
+msgstr "Forma de pago"
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d10
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d10
+msgid "Payments for educational services (Colegiatura)"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model,name:custom_product.model_product_template
+msgid "Product"
+msgstr "Producto"
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__product_downloads_url
+#: model:ir.model.fields,field_description:custom_product.field_product_template__product_downloads_url
+msgid "Product Downloads Url"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model,name:custom_product.model_product_product
+msgid "Product Variant"
+msgstr "Variantes de producto"
+
+#. module: custom_product
+#: model:ir.model,name:custom_product.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_tree_view_custom
+msgid "Quote"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_tree_view_custom
+msgid "RFQ"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d05
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d05
+msgid "Real interest effectively paid for mortgage loans (room house)"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_sale_order__parent_id
+msgid "Related Company"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__related_product_ids
+#: model:ir.model.fields,field_description:custom_product.field_product_template__related_product_ids
+#: model:ir.model.fields,field_description:custom_product.field_sale_order_line__related_product_ids
+msgid "Related Product"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__g02
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__g02
+msgid "Returns, discounts or bonuses"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model,name:custom_product.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: custom_product
+#: model:ir.model,name:custom_product.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de la orden de venta"
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__i07
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__i07
+msgid "Satellite communications"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_temp_view_custom
+msgid "Search"
+msgstr "Buscar"
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__related_product_ids
+#: model:ir.model.fields,help:custom_product.field_product_template__related_product_ids
+msgid "Selected related products to show in sale order line"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "State"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model,name:custom_product.model_stock_valuation_layer
+msgid "Stock Valuation Layer"
+msgstr "Capa de valoración de existencias"
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__dashless_code
+#: model:ir.model.fields,help:custom_product.field_product_template__dashless_code
+msgid "Store product dashless code."
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_product_product__mlm
+#: model:ir.model.fields,help:custom_product.field_product_template__mlm
+msgid "Store product mlm value."
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "Street"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "Street 2..."
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "Street..."
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_inherit
+msgid "Support"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__support_url
+#: model:ir.model.fields,field_description:custom_product.field_product_template__support_url
+msgid "Support Url"
+msgstr ""
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.product_inherit
+msgid "Technical"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_product_product__technical_info_url
+#: model:ir.model.fields,field_description:custom_product.field_product_template__technical_info_url
+msgid "Technical Info Url"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__i06
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__i06
+msgid "Telephone communications"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__p01
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__p01
+msgid "To define"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_sale_order_line__related_product_ids
+msgid "To show related products in sale order line"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__i03
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__i03
+msgid "Transportation equipment"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_res_partner__types_id
+#: model:ir.model.fields,field_description:custom_product.field_res_users__types_id
+#: model:ir.model.fields,field_description:custom_product.field_types_gr__name
+msgid "Type"
+msgstr "Tipo"
+
+#. module: custom_product
+#: model:ir.actions.act_window,name:custom_product.types_gr_model_action
+#: model:ir.model,name:custom_product.model_types_gr
+#: model:ir.ui.menu,name:custom_product.menu_gr_types
+msgid "Types"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_account_bank_statement_line__l10n_mx_edi_usage
+#: model:ir.model.fields,field_description:custom_product.field_account_move__l10n_mx_edi_usage
+#: model:ir.model.fields,field_description:custom_product.field_account_payment__l10n_mx_edi_usage
+#: model:ir.model.fields,field_description:custom_product.field_res_partner__l10n_mx_edi_usage_purchase
+#: model:ir.model.fields,field_description:custom_product.field_res_partner__l10n_mx_edi_usage_sales
+#: model:ir.model.fields,field_description:custom_product.field_res_users__l10n_mx_edi_usage_purchase
+#: model:ir.model.fields,field_description:custom_product.field_res_users__l10n_mx_edi_usage_sales
+msgid "Usage"
+msgstr "Uso"
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_account_bank_statement_line__l10n_mx_edi_usage
+#: model:ir.model.fields,help:custom_product.field_account_move__l10n_mx_edi_usage
+#: model:ir.model.fields,help:custom_product.field_account_payment__l10n_mx_edi_usage
+#: model:ir.model.fields,help:custom_product.field_res_partner__l10n_mx_edi_usage_purchase
+#: model:ir.model.fields,help:custom_product.field_res_partner__l10n_mx_edi_usage_sales
+#: model:ir.model.fields,help:custom_product.field_res_users__l10n_mx_edi_usage_purchase
+#: model:ir.model.fields,help:custom_product.field_res_users__l10n_mx_edi_usage_sales
+msgid ""
+"Used in CFDI 3.3 to express the key to the usage that will gives the receiver to this invoice. This value is defined by the customer.\n"
+"Note: It is not cause for cancellation if the key set is not the usage that will give the receiver of the document."
+msgstr ""
+"Usado en CFDI 3.3 para expresar la clave del uso que le dará el receptor a esta factura. Este valor lo define el cliente.\n"
+"Nota: No es motivo de cancelación si la clave no es el uso que le dará al destinatario del documento."
+
+#. module: custom_product
+#: model:ir.model.fields,field_description:custom_product.field_purchase_order__partner_id
+msgid "Vendor"
+msgstr "Proveedor"
+
+#. module: custom_product
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_purchase__d06
+#: model:ir.model.fields.selection,name:custom_product.selection__res_partner__l10n_mx_edi_usage_sales__d06
+msgid "Voluntary contributions to SAR"
+msgstr ""
+
+#. module: custom_product
+#: model:ir.model,name:custom_product.model_website
+msgid "Website"
+msgstr "Sitio web"
+
+#. module: custom_product
+#: model:ir.model.fields,help:custom_product.field_purchase_order__partner_id
+msgid "You can find a vendor by its Name, TIN, Email or Internal Reference."
+msgstr ""
+"Puede encontrar un proveedor por su nombre, NIF, correo electrónico o "
+"referencia interna."
+
+#. module: custom_product
+#: model_terms:ir.ui.view,arch_db:custom_product.res_partner_address_mx_custom
+msgid "ZIP"
+msgstr ""

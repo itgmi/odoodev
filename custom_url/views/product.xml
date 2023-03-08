@@ -3,11 +3,11 @@
     <record id="product_temp_view_custom" model="ir.ui.view">
         <field name="name">product.temp.view.custom</field>
         <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="inherit_id" ref="custom_product.product_temp_view_custom"/>
         <field name="arch" type="xml">
-            <field name="barcode" position="after">
-                <field name="public_url_sp" readonly="True" force_save="1"/>
-            </field>
+            <xpath expr="//field[@name='image_url']" position="after">
+                <field name="public_url_sp"/>
+            </xpath>
         </field>
     </record>
 </odoo>

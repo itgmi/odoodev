@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="transfers_search_view_custom" model="ir.ui.view">
+        <field name="name">transfers.search.view.custom</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="carrier_tracking_ref"/>
+            </field>
+        </field>
+    </record>
+</odoo>

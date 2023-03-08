@@ -1,6 +1,6 @@
 {
     'name': 'S D I N',
-    'version': '16.0.1.0.1',
+    'version': '16.0.1.0.2',
     'summary': """Siemens Digital Inventory Network""",
     'description': 'Siemens Digital Inventory Network',
     'category': '',

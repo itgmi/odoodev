@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="upload_csf_wizard_form" model="ir.ui.view">
+        <field name="name">upload.csf.form</field>
+        <field name="model">upload.csf</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="file_name" string="File Name"
+                               invisible="1"/>
+                        <field name="file" nolabel="0" filename="file_name"/>
+                    </group>
+                    <footer>
+                        <button name="upload_csf" type="object"
+                                string="Upload" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary"
+                                special="cancel" data-hotkey="z"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="upload_csf_wizard_action" model="ir.actions.act_window">
+        <field name="name">Upload CSF</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">upload.csf</field>
+        <field name="view_id" ref="custom_csf.upload_csf_wizard_form"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="binding_view_types">form</field>
+    </record>
+    <record id="res_partner_search_inherit_gr" model="ir.ui.view">
+        <field name="name">res.partner.search.inherit.gr</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">button_in_tree</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

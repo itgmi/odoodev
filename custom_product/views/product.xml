@@ -3,14 +3,54 @@
     <record id="product_temp_view_custom" model="ir.ui.view">
         <field name="name">product.temp.view.custom</field>
         <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="inherit_id"
+               ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml">
-        <field name="barcode" position="after">
-            <field name="mlm"/>
-            <field name="dashless_code"/>
-            <field name="brand"/>
-            <field name="long_default_code"/>
-        </field>
+            <style>
+                .cust_marg{
+                    margin-left: 20px;
+                }
+            </style>
+            <xpath expr="//label[@for='purchase_ok']" position="after">
+                <button name="product_url_open" type="object" string="Search" class="btn btn-primary cust_marg"/>
+            </xpath>
+            <field name="barcode" position="after">
+                <field name="dashless_code"/>
+                <field name="brand" force_save="1"/>
+                <field name="description_gr"/>
+                <field name="long_default_code"/>
+            </field>
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="product_tag_ids" position="move"/>
+            </xpath>
+            <xpath expr="//group[@name='group_general']" position="inside">
+                <field name="categ_id" position="move"/>
+                <field name="default_code" position="move"/>
+                <field name="long_default_code" position="move"/>
+                <field name="dashless_code" position="move"/>
+                <field name="description_gr" position="move"/>
+            </xpath>
+            <xpath expr="//div[@name='standard_price_uom']" position="after">
+                <field name="taxes_id" position="move"/>
+            </xpath>
+            <field name="categ_id" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_quick_create': True}
+                </attribute>
+            </field>
+            <field name="default_code" position="attributes">
+                <attribute name="string">Part Number</attribute>
+            </field>
+            <field name="taxes_id" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </field>
+            <field name="name" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
+            </field>
+            <field name="default_code" position="attributes">
+                <attribute name="attrs">{'invisible': [('product_variant_count', '>', 1000)]}</attribute>
+            </field>
             <xpath expr="//page[@name='general_information']" position="after">
                 <page name="E-Commerce" string="E Commerce">
                     <group>
@@ -20,14 +60,15 @@
                             <field name="manual_url"/>
                             <field name="support_url"/>
                             <field name="product_downloads_url"/>
-                            <field name="image_url"/>
+                            <field name="image_url" invisible="1"/>
                         </group>
                         <group string="Description">
                             <field name="ecommerce_description"/>
                         </group>
                     </group>
                     <group string="">
-                        <field name="related_product_ids"  widget="many2many_tags"/>
+                        <field name="related_product_ids"
+                               widget="many2many_tags"/>
                     </group>
                 </page>
             </xpath>
@@ -38,22 +79,86 @@
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
-        <field name="barcode" position="after">
-            <field name="mlm"/>
-            <field name="dashless_code"/>
-            <field name="brand"/>
-            <field name="long_default_code"/>
-        </field>
+            <style>
+                .cust_marg{
+                    margin-left: 20px;
+                }
+            </style>
+            <xpath expr="//label[@for='purchase_ok']" position="after">
+                <button name="product_url_open_pd" type="object" string="Search" class="btn btn-primary cust_marg"/>
+            </xpath>
+            <field name="barcode" position="after">
+                <field name="mlm" invisible="1"/>
+                <field name="dashless_code"/>
+                <field name="brand" force_save="1"/>
+                <field name="long_default_code"/>
+            </field>
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="product_tag_ids" position="move"/>
+            </xpath>
+            <xpath expr="//group[@name='group_general']" position="inside">
+                <field name="categ_id" position="move"/>
+                <field name="default_code" position="move"/>
+                <field name="long_default_code" position="move"/>
+                <field name="dashless_code" position="move"/>
+                <field name="description_gr"/>
+            </xpath>
+            <xpath expr="//div[@name='standard_price_uom']" position="after">
+                <field name="taxes_id" position="move"/>
+            </xpath>
+            <field name="categ_id" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create':
+                    True, 'no_quick_create': True}
+                </attribute>
+            </field>
+            <field name="default_code" position="attributes">
+                <attribute name="string">Part Number</attribute>
+            </field>
+            <field name="additional_product_tag_ids" position="attributes">
+                 <attribute name="invisible">1</attribute>
+            </field>
+            <field name="taxes_id" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </field>
+            <field name="name" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
+            </field>
+            <field name="default_code" position="attributes">
+                <attribute name="attrs">{'invisible': [('product_variant_count', '>', 1000)]}</attribute>
+            </field>
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page name="E-Commerce" string="E Commerce">
+                    <group>
+                        <group string="Links">
+                            <field name="datasheet_url"/>
+                            <field name="technical_info_url"/>
+                            <field name="manual_url"/>
+                            <field name="support_url"/>
+                            <field name="product_downloads_url"/>
+                            <field name="image_url" invisible="1"/>
+                        </group>
+                        <group string="Description">
+                            <field name="ecommerce_description"/>
+                        </group>
+                    </group>
+                    <group string="">
+                        <field name="related_product_ids"
+                               widget="many2many_tags"/>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
     <record id="product_website_view_custom" model="ir.ui.view">
         <field name="name">product.website.view.custom</field>
         <field name="model">product.template</field>
-        <field name="inherit_id" ref="website_sale.product_template_form_view"/>
+        <field name="inherit_id"
+               ref="website_sale.product_template_form_view"/>
         <field name="arch" type="xml">
-        <field name="website_id" position="after">
-            <field name="allowed_website_ids" widget="many2many_tags"/>
-        </field>
+            <field name="website_id" position="after">
+                <field name="allowed_website_ids" widget="many2many_tags"/>
+            </field>
         </field>
     </record>
     <record id="product_tree_view_custom" model="ir.ui.view">
@@ -61,23 +166,40 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_tree_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='action_open_label_layout']" position="after">
-                <button string="Quote" type="action" name="%(custom_product.create_quotation_wizard_action)d"/>
-                <button string="RFQ" type="action" name="%(custom_product.create_rfq_wizard_action)d"/>
+            <xpath expr="//button[@name='action_open_label_layout']"
+                   position="after">
+                <button string="Quote" type="action"
+                        name="%(custom_product.create_quotation_wizard_action)d"/>
+                <button string="RFQ" type="action"
+                        name="%(custom_product.create_rfq_wizard_action)d"/>
             </xpath>
-        <field name="website_id" position="after">
-            <field name="allowed_website_ids" widget="many2many_tags" optional="hide"/>
-        </field>
+            <field name="website_id" position="after">
+                <field name="allowed_website_ids" widget="many2many_tags"
+                       optional="hide"/>
+            </field>
         </field>
     </record>
-     <record id="sale_order_view_custom" model="ir.ui.view">
+    <record id="sale_order_view_custom" model="ir.ui.view">
         <field name="name">sale.order.view.custom</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-        <xpath expr="/form/sheet/notebook/page/field[@name='order_line']//field[@name='product_template_id']" position="after">
-            <field name="related_product_ids" widget="many2many_tags"/>
-        </xpath>
+            <xpath expr="/form/sheet/notebook/page/field[@name='order_line']//field[@name='product_template_id']"
+                   position="after">
+                <field name="related_product_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_temp_search_view_custom" model="ir.ui.view">
+        <field name="name">product.temp.search.view.custom</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="brand"/>
+                <field name="description_sale"/>
+                <field name="ecommerce_description"/>
+            </field>
         </field>
     </record>
 </odoo>

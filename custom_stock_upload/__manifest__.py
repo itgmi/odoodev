@@ -1,19 +1,20 @@
 {
     'name': "custom stock upload",
     'summary': """Custom Stock Upload""",
-    'version': '16.0.1.1.1',
+    'version': '16.0.1.2.4',
     'description': """Custom Stock Upload""",
     'category': '',
     'author': '',
     'company': '',
     'website': "",
     'depends': ['base', 'stock', 'stock_account', 'website_sale',
-                'website', 'web'],
+                'website', 'web', 'sale', 'delivery'],
     'data': [
         'views/stock_upload.xml',
         'views/users.xml',
         'views/product.xml',
         'views/location.xml',
+        'views/transfers.xml',
     ],
     'assets': {
         'web.assets_frontend': [

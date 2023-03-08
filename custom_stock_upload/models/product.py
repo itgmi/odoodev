@@ -5,6 +5,7 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     stock_available = fields.Float(compute='_compute_stock_available')
+    prices_warning = fields.Boolean('Prices Warning', default=True)
 
     def _compute_stock_available(self):
         stocks = self.env['stock.quant'].search([])
