@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 20:11+0000\n"
-"PO-Revision-Date: 2023-03-07 20:11+0000\n"
+"POT-Creation-Date: 2023-03-08 14:31+0000\n"
+"PO-Revision-Date: 2023-03-08 14:31+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,16 +23,26 @@ msgid ""
 "A consumable product is a product for which stock is not managed.\n"
 "A service is a non-material product you provide."
 msgstr ""
+" Un producto es almacenable cuando de administra en existencia. \n"
+" Un consumible no se administra su existencia.\n"
+" Un servicio es un producto no material."
 
 #. module: custom_price
 #: model_terms:ir.ui.view,arch_db:custom_price.sale_order_view_custom_upload
-msgid "Asegurate de subir archivo con el nombre de la OC"
-msgstr ""
+msgid "Be sure to upload the filename as the PO"
+msgstr "Asegurate de subir archivo con el nombre de la OC"
 
 #. module: custom_price
 #: model_terms:ir.ui.view,arch_db:custom_price.upload_docs_wizard_form
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
+
+#. module: custom_price
+#: model:ir.model.fields,field_description:custom_price.field_account_bank_statement_line__carrier_tracking_ref
+#: model:ir.model.fields,field_description:custom_price.field_account_move__carrier_tracking_ref
+#: model:ir.model.fields,field_description:custom_price.field_account_payment__carrier_tracking_ref
+msgid "Carrier Tracking Ref"
+msgstr "Guia de seguimiento"
 
 #. module: custom_price
 #: model:ir.model.fields.selection,name:custom_price.selection__product_template__detailed_type__consu
@@ -42,20 +52,23 @@ msgstr "Consumible"
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_upload_docs__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creado por"
 
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_upload_docs__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creado en"
 
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_product_product__gr_currency_id
 #: model:ir.model.fields,field_description:custom_price.field_product_template__gr_currency_id
 msgid "Currency"
-msgstr ""
+msgstr "Divisa"
 
 #. module: custom_price
+#: model:ir.model.fields,field_description:custom_price.field_account_bank_statement_line__customer_order
+#: model:ir.model.fields,field_description:custom_price.field_account_move__customer_order
+#: model:ir.model.fields,field_description:custom_price.field_account_payment__customer_order
 #: model:ir.model.fields,field_description:custom_price.field_sale_order__customer_order
 msgid "Customer Order"
 msgstr "Orden de Compra"
@@ -63,38 +76,43 @@ msgstr "Orden de Compra"
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_upload_docs__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_upload_docs__file
 msgid "File"
-msgstr ""
+msgstr "Archivo"
 
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_upload_docs__file_name
 #: model_terms:ir.ui.view,arch_db:custom_price.upload_docs_wizard_form
 msgid "File Name"
-msgstr ""
+msgstr "Nombre de archivo"
 
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_upload_docs__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
+
+#. module: custom_price
+#: model:ir.model,name:custom_price.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento de diario"
 
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_upload_docs____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modificacion"
 
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_upload_docs__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Actualizado por"
 
 #. module: custom_price
 #: model:ir.model.fields,field_description:custom_price.field_upload_docs__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultima actualizacion"
 
 #. module: custom_price
 #: model:ir.model,name:custom_price.model_product_pricelist_item
@@ -110,7 +128,7 @@ msgstr "Producto"
 #: model:ir.model.fields,field_description:custom_price.field_product_product__detailed_type
 #: model:ir.model.fields,field_description:custom_price.field_product_template__detailed_type
 msgid "Product Type"
-msgstr ""
+msgstr "Tipo de producto"
 
 #. module: custom_price
 #: model:ir.model,name:custom_price.model_sale_order
@@ -132,9 +150,9 @@ msgstr "Producto almacenable"
 #: model_terms:ir.ui.view,arch_db:custom_price.sale_order_view_custom_upload
 #: model_terms:ir.ui.view,arch_db:custom_price.upload_docs_wizard_form
 msgid "Upload"
-msgstr ""
+msgstr "Subir"
 
 #. module: custom_price
 #: model:ir.model,name:custom_price.model_upload_docs
 msgid "Upload Docs"
-msgstr ""
+msgstr "Subir docs"

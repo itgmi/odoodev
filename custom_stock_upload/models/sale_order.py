@@ -101,3 +101,19 @@ class SaleOrderLine(models.Model):
                     if rec.product_id.product_tmpl_id.prices_warning:
                         return {'warning': {'title': 'Quoted Prices',
                                             'message': message}}
+            elif int(quoted_count) == 1:
+                if quoted_orders:
+                    for rec in quoted_orders:
+                        quote_price_one = rec.price_unit,
+                        quote_sale_one = rec.salesman_id.name,
+                        quote_currency_one = rec.currency_id.name,
+                        quote_customer_one = rec.order_partner_id.name,
+                    message = 'Price   :   ' + str(quote_price_one[0]) \
+                              + ' ' + str(quote_currency_one[0]) + \
+                              '                Sales Person   :   ' + \
+                              str(quote_sale_one[0]) + \
+                              '                Customer   :   ' + \
+                              str(quote_customer_one[0])
+                    if rec.product_id.product_tmpl_id.prices_warning:
+                        return {'warning': {'title': 'Quoted Prices',
+                                            'message': message}}
