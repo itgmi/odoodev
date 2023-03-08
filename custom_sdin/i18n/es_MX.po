@@ -1,0 +1,169 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom_sdin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-08 14:34+0000\n"
+"PO-Revision-Date: 2023-03-08 14:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid "<span class=\"o_form_label\">Active</span>"
+msgstr "<span class=\"o_form_label\">Activo</span>"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid "<span class=\"o_form_label\">Category</span>"
+msgstr "<span class=\"o_form_label\">Categoria</span>"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid ""
+"<span class=\"o_form_label\">Customer Number SAP\n"
+"                                </span>"
+msgstr ""
+"<span class=\"o_form_label\">Customer Number SAP\n"
+"                                </span>"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid "<span class=\"o_form_label\">Encryption Key</span>"
+msgstr "<span class=\"o_form_label\">Llave de Encriptacion</span>"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid ""
+"<span class=\"o_form_label\">Frequency(Hour)\n"
+"                                </span>"
+msgstr ""
+"<span class=\"o_form_label\">Frecuencia(Horas)\n"
+" 				 </span>"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid ""
+"<span class=\"o_form_label\">Initialization Vector\n"
+"                                </span>"
+msgstr ""
+"<span class=\"o_form_label\">Vector de Inicializacion\n"
+"                                </span>"
+
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid "<span class=\"o_form_label\">SDIN Url</span>"
+msgstr "<span class=\"o_form_label\">URL WS SDIN</span>"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid "<span class=\"o_form_label\">Store Location</span>"
+msgstr "<span class=\"o_form_label\">Ubicacion del partner</span>"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid ""
+"<span class=\"o_form_label\">Store Name\n"
+"                                </span>"
+msgstr ""
+"<span class=\"o_form_label\">Nombre del partner\n"
+"                                </span>"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_res_config_settings__active_sdin
+msgid "Active"
+msgstr "Activo"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_res_config_settings__category
+msgid "Category"
+msgstr "Categoria"
+
+#. module: custom_sdin
+#: model:ir.model,name:custom_sdin.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid "Configuration"
+msgstr "Configuracion"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_res_config_settings__customer_nymber_SAP
+msgid "Customer Number SAP"
+msgstr "Numero de cliente SAP"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_res_config_settings__encryption_key
+msgid "Encryption Key"
+msgstr "Llave de encriptacion"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_res_config_settings__frequency
+msgid "Frequency"
+msgstr "Frecuencia"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_res_config_settings__iv
+msgid "IV"
+msgstr "Vector de Inicializacion"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_ir_cron__logs
+msgid "Latest Log"
+msgstr "Ultimo registro"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.cron_view_custom
+msgid "Logs"
+msgstr "Registros"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_ir_cron__record
+msgid "Records"
+msgstr "Registros"
+
+#. module: custom_sdin
+#: model_terms:ir.ui.view,arch_db:custom_sdin.res_config_settings_view_form_sdin
+msgid "SDIN"
+msgstr "SDIN"
+
+#. module: custom_sdin
+#: model:ir.actions.server,name:custom_sdin.sdin_cron_ir_actions_server
+#: model:ir.cron,cron_name:custom_sdin.sdin_cron
+msgid "SDIN Cron Job"
+msgstr "Tarea programada SDIN"
+
+#. module: custom_sdin
+#: model:ir.actions.act_window,name:custom_sdin.sdin_config_settings_action
+msgid "SDIN Settings"
+msgstr "Configuracion SDIN"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_res_config_settings__url
+msgid "SDIN Url"
+msgstr "URL SDIN"
+
+#. module: custom_sdin
+#: model:ir.model,name:custom_sdin.model_ir_cron
+msgid "Scheduled Actions"
+msgstr "Acciones planificadas"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_res_config_settings__store_location
+msgid "Store Location"
+msgstr "Ubicacion del partner"
+
+#. module: custom_sdin
+#: model:ir.model.fields,field_description:custom_sdin.field_res_config_settings__store_name
+msgid "Store Name"
+msgstr "Nombre del Partner"
