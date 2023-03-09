@@ -7,7 +7,7 @@
     'author': '',
     'company': '',
     'website': "",
-    'depends': ['base', 'website_sale', 'product'],
+    'depends': ['base', 'website_sale', 'product', 'website'],
     'data': [
         'views/request.xml',
         'views/product.xml',

@@ -5,7 +5,7 @@
         <xpath expr="//div[@id='product_attributes_simple']" position="before">
             <t t-set="user" t-value="request.env.user.partner_id.active"/>
             <t t-if="user">
-            <t t-if="product.request_quote">
+            <t t-if="website.id in product.request_website_ids.ids">
             <button class="btn btn-primary request_quote_request_user"
                     style="margin-bottom: 17px;">
                 Request Quote
@@ -19,7 +19,7 @@
             </t>
             </t>
             <t t-else="">
-                <t t-if="product.request_quote">
+                <t t-if="website.id in product.request_website_ids.ids">
                     <button class="btn btn-primary request_quote_request"
                     style="margin-bottom: 17px;">
                     Request Quote
