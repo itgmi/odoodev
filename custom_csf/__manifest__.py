@@ -18,6 +18,7 @@
         'web.assets_backend': [
            '/custom_csf/static/src/xml/list_controller.xml',
            '/custom_csf/static/src/js/list_controler.js',
+           '/custom_csf/static/src/js/list_view.js',
         ],
     },
     'external_dependencies': {

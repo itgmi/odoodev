@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<templates>
+<templates id="template" xml:space="preserve">
    <t t-extend="ListView.buttons" t-name="button_near_create.buttons">
        <t t-jquery="button.o_list_button_add" t-operation="after">
-           <button type="button" class="btn btn-primary open_wizard_action" style="margin-left:15px;">
+           <button type="button" class="btn btn-primary open_wizard_action"
+                   style="margin-left:15px;">
                create new client from CSF
            </button>
        </t>
    </t>
+    <t t-inherit="web.ListView.Buttons" t-inherit-mode="primary" owl="1" t-name="ClientNew.buttons">
+    <xpath expr="//*[@class='btn btn-secondary fa fa-download o_list_export_xlsx']"
+       position="after">
+        <button t-if="props.resModel == 'res.partner'" type="button" class="btn btn-primary o_list_new_button"
+        t-on-click="actionDef">create new client from CSF</button>
+    </xpath>
+</t>
 </templates>

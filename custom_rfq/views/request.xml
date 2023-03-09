@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_quantity" inherit_id="website_sale.product"
+              name="Select Quantity">
+        <xpath expr="//div[@id='product_attributes_simple']" position="before">
+            <t t-set="user" t-value="request.env.user.partner_id.active"/>
+            <t t-if="user">
+            <t t-if="product.request_quote">
+            <button class="btn btn-primary request_quote_request_user"
+                    style="margin-bottom: 17px;">
+                Request Quote
+            </button>
+                <input type="hidden"
+                   class="product_id_request_user"
+                   t-att-value="product_variant.id"/>
+                <input type="hidden"
+                   class="website_request_user"
+                   t-att-value="website.id"/>
+            </t>
+            </t>
+            <t t-else="">
+                <t t-if="product.request_quote">
+                    <button class="btn btn-primary request_quote_request"
+                    style="margin-bottom: 17px;">
+                    Request Quote
+                    </button>
+                </t>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='product_option_block']" position="replace">
+            <form id="sale_return_form">
+                <style>
+                    .toast{
+                            width: 199px;
+                            max-width: 100%;
+                            font-size: 14px;
+                            pointer-events: auto;
+                            background-color: rgba(255, 255, 255, 0.85);
+                            background-clip: padding-box;
+                            border: 2px solid black;
+                            box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 0%);
+                            border-radius: 0.25rem;
+                            position: fixed;
+                            top: 130px;
+                            right: 20px;
+                        }
+                </style>
+                <div class="toast request_toast">
+                        <div class="toast-header">
+                            Request Quote Created
+                            <button type="button"
+                                    class="btn-close request_toast_close"
+                                    data-dismiss="toast"/>
+                        </div>
+                    </div>
+                <div id="hidden_box_request" class="modal"
+                     style="display:none">
+                    <div class="modal-dialog modal-content"
+                         style="border: solid 1px #604e5b; margin-top: 150px; height: 480px; max-width: 370px;">
+                        <div class="modal-body" id="pop_html">
+                            <style>
+                                input::-webkit-outer-spin-button,
+                                input::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                                }
+                                input[type=number] {
+                                -moz-appearance: textfield;
+                                }
+                            </style>
+                            <form>
+                                <div style="display: flex; justify-content: center;">
+                                    <h1 style="font-size: 1em;
+                                               color: #333;
+                                               font-style: oblique;
+                                               font-weight: normal;">
+                                        <p t-field="product_variant.name"/>
+                                    </h1>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center;">
+                                    <t t-set="curr_pl" t-value="website.pricelist_id"/>
+                                    <input type="hidden"
+                                           class="website_request"
+                                           t-att-value="website.id"/>
+                                    <input type="hidden"
+                                           class="product_id_request"
+                                           t-att-value="product_variant.id"
+                                           t-att-data-product-id="product_variant.id"/>
+                                    <input type="hidden"
+                                           class="price_list_id"
+                                           t-att-value="curr_pl.id"/>
+                                    <input type="hidden"
+                                           class="price_list_name"
+                                           t-att-value="curr_pl.name"/>
+                                    <label for="name"
+                                           style="font-size: 1.2em; margin-bottom: 5px;">
+                                        Name:
+                                    </label>
+                                    <input type="text" id="name_request"
+                                           name="name" required="required"
+                                           style="padding: 7px; border-radius: 5px; border: 2px solid #ccc; font-size: 1.2em; margin-bottom: 10px;"/>
+                                    <label for="email"
+                                           style="font-size: 1.2em; margin-bottom: 5px;">
+                                        Email:
+                                    </label>
+                                    <input type="email" id="email_request"
+                                           name="email" required="required"
+                                           style="padding: 7px; border-radius: 5px; border: 2px solid #ccc; font-size: 1.2em; margin-bottom: 10px;"/>
+                                    <label for="phone"
+                                           style="font-size: 1.2em; margin-bottom: 5px;">
+                                        Phone:
+                                    </label>
+                                    <input type="number" id="phone_request"
+                                           name="phone" required="required"
+                                           style="padding: 7px; border-radius: 5px; border: 2px solid #ccc; font-size: 1.2em;"/>
+                                </div>
+                            </form>
+                        </div>
+                        <div style="display: flex; justify-content: center; margin-top: 20px;">
+                            <button id='submit_request'
+                                    class="btn btn-secondary"
+                                    style="padding: 7px 25px; margin-right: 10px;">
+                                Submit
+                            </button>
+                            <button id="cancel_request"
+                                    class="btn btn-secondary"
+                                    style="color: #604e5b; border: solid 2px #604e5b; font-size: 1.2em; padding: 7px 25px; background-color: white;">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div id="product_option_block" class="d-flex flex-wrap w-100"/>
+        </xpath>
+    </template>
+     <template id="request_cart" inherit_id="website_sale.cart"
+              name="Request Cart">
+        <xpath expr="//div[@class='d-flex flex-column']" position="before">
+            <t t-set="user" t-value="request.env.user.partner_id.active"/>
+            <t t-if="user">
+            <button class="btn btn-primary mb32 request_quote_request_cart_user"
+                    style="margin-left: 330px;background-color: darkblue;">
+                Request Quote
+            </button>
+                <input type="hidden"
+                       class="product_id_request_cart_user"
+                       t-att-value="website_sale_order.website_order_line.ids"/>
+                <input type="hidden"
+                   class="website_request_cart_user"
+                   t-att-value="website.id"/>
+            </t>
+            <t t-else="">
+                <button class="btn btn-primary mb32 request_quote_request_cart"
+                    style="margin-left: 330px;background-color: darkblue;">
+                Request Quote
+            </button>
+            </t>
+        </xpath>
+         <xpath expr="//div[@id='oe_structure_website_sale_cart_1']" position="replace">
+            <form id="cart_request">
+                <style>
+                    .toast{
+                            width: 199px;
+                            max-width: 100%;
+                            font-size: 14px;
+                            pointer-events: auto;
+                            background-color: rgba(255, 255, 255, 0.85);
+                            background-clip: padding-box;
+                            border: 2px solid black;
+                            box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 0%);
+                            border-radius: 0.25rem;
+                            position: fixed;
+                            top: 130px;
+                            right: 20px;
+                        }
+                </style>
+                <div class="toast request_toast_cart">
+                        <div class="toast-header">
+                            Request Quote Created
+                            <button type="button"
+                                    class="btn-close request_toast_close_cart"
+                                    data-dismiss="toast"/>
+                        </div>
+                    </div>
+                <div id="hidden_box_request_cart" class="modal"
+                     style="display:none">
+                    <div class="modal-dialog modal-content"
+                         style="border: solid 1px #604e5b; margin-top: 150px; height: 427px; max-width: 370px;">
+                        <div class="modal-body" id="pop_html">
+                            <style>
+                                input::-webkit-outer-spin-button,
+                                input::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                                }
+                                input[type=number] {
+                                -moz-appearance: textfield;
+                                }
+                            </style>
+                            <form>
+                                <div style="display: flex; justify-content: center;">
+                                    <h1 style="font-size: 1em;
+                                               color: #333;
+                                               font-style: oblique;
+                                               font-weight: normal;">
+                                    </h1>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center;">
+                                    <t t-set="curr_pl" t-value="website.pricelist_id"/>
+                                    <input type="hidden"
+                                           class="website_request_cart"
+                                           t-att-value="website.id"/>
+                                    <input type="hidden"
+                                           class="product_id_request_cart"
+                                           t-att-value="website_sale_order.website_order_line.ids"/>
+                                    <input type="hidden"
+                                           class="price_list_id_cart"
+                                           t-att-value="curr_pl.id"/>
+                                    <input type="hidden"
+                                           class="price_list_name_cart"
+                                           t-att-value="curr_pl.name"/>
+                                    <label for="name"
+                                           style="font-size: 1.2em; margin-bottom: 5px;">
+                                        Name:
+                                    </label>
+                                    <input type="text" id="name_request_cart"
+                                           name="name" required="required"
+                                           style="padding: 7px; border-radius: 5px; border: 2px solid #ccc; font-size: 1.2em; margin-bottom: 10px;"/>
+                                    <label for="email"
+                                           style="font-size: 1.2em; margin-bottom: 5px;">
+                                        Email:
+                                    </label>
+                                    <input type="email" id="email_request_cart"
+                                           name="email" required="required"
+                                           style="padding: 7px; border-radius: 5px; border: 2px solid #ccc; font-size: 1.2em; margin-bottom: 10px;"/>
+                                    <label for="phone"
+                                           style="font-size: 1.2em; margin-bottom: 5px;">
+                                        Phone:
+                                    </label>
+                                    <input type="number" id="phone_request_cart"
+                                           name="phone" required="required"
+                                           style="padding: 7px; border-radius: 5px; border: 2px solid #ccc; font-size: 1.2em;"/>
+                                </div>
+                            </form>
+                        </div>
+                        <div style="display: flex; justify-content: center; margin-top: 20px;">
+                            <button id='submit_request_cart'
+                                    class="btn btn-secondary"
+                                    style="padding: 7px 25px; margin-right: 10px;">
+                                Submit
+                            </button>
+                            <button id="cancel_request_cart"
+                                    class="btn btn-secondary"
+                                    style="color: #604e5b; border: solid 2px #604e5b; font-size: 1.2em; padding: 7px 25px; background-color: white;">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="oe_structure" id="oe_structure_website_sale_cart_1"/>
+        </xpath>
+     </template>
+</odoo>

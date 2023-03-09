@@ -42,6 +42,7 @@
                 <div style="padding-left: 13%;
                             padding-right: 15%;
                             font-size: 20px;">
+                    <p><strong>Product Details</strong></p><br/>
                     <p>
                         <t t-esc="product.ecommerce_description"/>
                     </p>
