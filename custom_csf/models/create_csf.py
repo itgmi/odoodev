@@ -196,7 +196,7 @@ class CreateCsf(models.TransientModel):
                     #    'res_id': record.id,
                     }
                 
-            return super(CreateCsf, self)
+        return super(CreateCsf, self)
                 elif self.type == 'company':
                     record.company_type = 'company'
                     attachment = self.env['ir.attachment'].create({
