@@ -264,33 +264,41 @@ class CreateCsf(models.TransientModel):
                     country = self.env['res.country'].search([
                         ('name', '=', 'México')])
 
+     
                     # Search for the Nombre de la Entidad Federativa value in the text
-                    entidad_index = text.find(
-                        "Nombre de la Entidad Federativa:")
+                    entidad_index = text.find("Nombre de la Entidad Federativa:")
                     if entidad_index != -1:
                         entidad_value = text[entidad_index + len(
                             "Nombre de la Entidad Federativa:"):].strip().split(
                             "\n")[0]
                         if entidad_value:
-                            state = self.env['res.country.state'].search([
-                                ('name', '=', entidad_value.title()),
-                                ('country_id', '=', country.id)],
-                                limit=1)
-                            record.state_id = state.id
+                            if entidad_value == 'MEXICO':
+                                state = self.env['res.country.state'].search([
+                                    ('name', '=', 'México'),
+                                    ('country_id', '=', country.id)],
+                                    limit=1)
+                                record.state_id = state.id
+                            else:
+                                state = self.env['res.country.state'].search([
+                                    ('name', 'like', entidad_value.title()),
+                                    ('country_id', '=', country.id)],
+                                    limit=1)
+                                record.state_id = state.id    
+                            
+                            
+                    # Search for the Nombre del Municipio o Demarcación Territorial value in the text
+                    municipio_index = text.find(
+                        "Nombre del Municipio o Demarcación Territorial:")
+                    if municipio_index != -1:
+                        municipio_value = text[municipio_index + len(
+                            "Nombre del Municipio o Demarcación Territorial:"):].strip().split(
+                            "\n")[0]
+                    if municipio_value:
+                        city = self.env['res.city'].search([
+                            ('name', 'like', municipio_value.title()),
+                            ('state_id', '=', state.id)], limit=1)
+                        record.city_id = city.id
 
-                            if record.state_id:
-                            # Search for the Nombre del Municipio o Demarcación Territorial value in the text
-                                municipio_index = text.find("Nombre del Municipio o Demarcación Territorial:")
-                                if municipio_index != -1:
-                                    municipio_value = text[municipio_index + len(
-                                        "Nombre del Municipio o Demarcación Territorial:"):].strip().split(
-                                        "\n")[0]
-                                if municipio_value:
-                                    city = self.env['res.city'].search([
-                                        ('name', 'like', municipio_value.title()),
-                                        ('state_id', '=', state.id)], limit=1)
-                                    record.city_id = city.id
-                                    
                     # Search for the Régimen General de Ley Personas Morales value in the text
                     regimen_regex = r"Régimen General de Ley Personas Morales"
                     regimen_match = re.search(regimen_regex, text)
