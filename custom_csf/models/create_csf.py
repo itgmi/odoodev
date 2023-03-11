@@ -131,9 +131,6 @@ class CreateCsf(models.TransientModel):
                         if col_value:
                             record.l10n_mx_edi_colony = col_value
 
-                    country = self.env['res.country'].search([
-                        ('name', 'ilike', 'Mexico')])
-
                     # Search for the Nombre de la Entidad Federativa value in the text
                     entidad_index = text.find("Nombre de la Entidad Federativa:")
                     if entidad_index != -1:
@@ -252,9 +249,6 @@ class CreateCsf(models.TransientModel):
                             "Nombre de la Colonia:"):].strip().split("\n")[0]
                         if colonia_value:
                             record.l10n_mx_edi_colony = colonia_value
-
-                    country = self.env['res.country'].search([
-                        ('name', 'ilike', 'Mexico')])
 
                     # Search for the Nombre de la Entidad Federativa value in the text
                     entidad_index = text.find(
