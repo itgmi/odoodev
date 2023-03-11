@@ -146,14 +146,6 @@ class CreateCsf(models.TransientModel):
                                 ('country_id', '=', country.id)],
                                 limit=1)
                             record.state_id = state.id
-                            return {
-                                'type': 'ir.actions.act_window',
-                                'target': 'current',
-                                'view_mode': 'form',
-                                'res_model': 'res.partner',
-                                'res_id': record.id,
-                            }
-
                             
                     # Search for the Nombre del Municipio o Demarcación Territorial value in the text
                     municipio_index = text.find(
