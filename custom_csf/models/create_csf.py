@@ -74,12 +74,12 @@ class CreateCsf(models.TransientModel):
                         nc_value = nc_match.group(1).strip()
                         if nc_value:
                             record.name = nc_value
-                        else:
-                            nombre_regex = r'Registro Federal de Contribuyentes\s*(.*?)\s*Nombre, denominación o razón\s*social'
-                            nombre_match = re.search(nombre_regex, text, re.DOTALL)
-                            if nombre_match:
-                                nc_value = nombre_match.group(1).strip().replace('\n', ' ')
-                                record.name = nc_value
+                    else:
+                         nombre_regex = r'Registro Federal de Contribuyentes\s*(.*?)\s*Nombre, denominación o razón\s*social'
+                         nombre_match = re.search(nombre_regex, text, re.DOTALL)
+                         if nombre_match:
+                             nc_value = nombre_match.group(1).strip().replace('\n', ' ')
+                             record.name = nc_value
 
                     # Search for the Código Postal value
                     codigo_postal_regex = r'Código Postal:(\d{5})'
