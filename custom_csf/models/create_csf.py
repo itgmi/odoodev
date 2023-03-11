@@ -155,25 +155,19 @@ class CreateCsf(models.TransientModel):
                             }
 
                             
-                            # Search for the Nombre del Municipio o Demarcación Territorial value in the text
-                        municipio_index = text.find(
-                            "Nombre del Municipio o Demarcación Territorial:")
-                        if municipio_index != -1:
-                            municipio_value = text[municipio_index + len(
-                                "Nombre del Municipio o Demarcación Territorial:"):].strip().split(
-                                "\n")[0]
-                        if municipio_value:
-                            city = self.env['res.city'].search([
-                                ('name', 'like', municipio_value.title()),
-                                ('state_id', '=', state.id)], limit=1)
-                            record.city_id = city.id
-                            return {
-                                'type': 'ir.actions.act_window',
-                                'target': 'current',
-                                'view_mode': 'form',
-                                'res_model': 'res.partner',
-                                'res_id': record.id,
-                            }
+                    # Search for the Nombre del Municipio o Demarcación Territorial value in the text
+                    municipio_index = text.find(
+                        "Nombre del Municipio o Demarcación Territorial:")
+                    if municipio_index != -1:
+                        municipio_value = text[municipio_index + len(
+                            "Nombre del Municipio o Demarcación Territorial:"):].strip().split(
+                            "\n")[0]
+                    if municipio_value:
+                        city = self.env['res.city'].search([
+                            ('name', 'like', municipio_value.title()),
+                            ('state_id', '=', state.id)], limit=1)
+                        record.city_id = city.id
+
                     return {
                         'type': 'ir.actions.act_window',
                         'target': 'current',
