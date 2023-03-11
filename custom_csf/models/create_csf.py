@@ -141,10 +141,6 @@ class CreateCsf(models.TransientModel):
                             "Nombre de la Entidad Federativa:"):].strip().split(
                             "\n")[0]
                         if entidad_value:
-                            state = self.env['res.country.state'].search([
-                                ('name', 'like', entidad_value.title()),
-                                ('country_id', '=', country.id)],
-                                limit=1)
                             if entidad_value = 'MEXICO':
                                 state = self.env['res.country.state'].search([
                                     ('name', '=', 'México'),
