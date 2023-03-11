@@ -142,7 +142,7 @@ class CreateCsf(models.TransientModel):
                             "\n")[0]
                         if entidad_value:
                             state = self.env['res.country.state'].search([
-                                ('name', '=', entidad_value.title()),
+                                (unidecode('name'), '=', entidad_value.title()),
                                 ('country_id', '=', country.id)],
                                 limit=1)
                             record.state_id = state.id
