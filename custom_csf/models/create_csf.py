@@ -1,5 +1,5 @@
 from odoo import models, fields
-import os
+import os, PyPDF2
 from odoo.exceptions import ValidationError
 import base64
 import re
