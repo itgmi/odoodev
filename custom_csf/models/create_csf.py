@@ -44,6 +44,8 @@ class CreateCsf(models.TransientModel):
                                         attachment_ids=attachment.ids)
                     df_data = base64.b64decode(self.file)
                     pdf_data = BytesIO(df_data)
+                    pdf_reader = PyPDF2.PdfFileReader(pdf_data)
+                    textp = ''
                     text = extract_text(pdf_data)
                     # Define a regular expression to match the RFC value with 12 or 13 alphanumeric characters
                     rfc_regex = r'[A-Z]{3,4}\d{6}[A-Z0-9]{3,4}'
@@ -173,8 +175,19 @@ class CreateCsf(models.TransientModel):
                             ('name', 'like', municipio_value.title()),
                             ('state_id', '=', state.id)], limit=1)
                         record.city_id = city.id
-
+                    for i in range(pdf_reader.getNumPages()):
+                        page = pdf_reader.getPage(i)
+                        textp += page.extractText()
+                    regimen_matches = re.findall(r'Régimen de[^\r\n]*(?=Obligaciones:)', textp)
+                    for regimen in regimen_matches:
+                        regex = r'\d{2}/\d{2}/\d{4}'
+                        matches = re.findall(regex, regimen)
+                        result = re.split(regex, regimen)
+                        result = [r.strip() for r in result if r.strip()]
+                        message = str(result)
                     return {
+                        'warning': {'title': 'Favor de elegir el regimen correcto',
+                                            'message': message}
                         'type': 'ir.actions.act_window',
                         'target': 'current',
                         'view_mode': 'form',
