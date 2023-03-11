@@ -142,9 +142,14 @@ class CreateCsf(models.TransientModel):
                             "\n")[0]
                         if entidad_value:
                             state = self.env['res.country.state'].search([
-                                (unidecode('name'), 'equals', entidad_value.title()),
+                                ('name', 'like', entidad_value.title()),
                                 ('country_id', '=', country.id)],
                                 limit=1)
+                            if entidad_value = 'MEXICO':
+                                state = self.env['res.country.state'].search([
+                                    ('name', '=', 'México'),
+                                    ('country_id', '=', country.id)],
+                                    limit=1)
                             record.state_id = state.id
                             
                     # Search for the Nombre del Municipio o Demarcación Territorial value in the text
