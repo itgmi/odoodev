@@ -185,7 +185,7 @@ class CreateCsf(models.TransientModel):
                         result = re.split(regex, regimen)
                         result = [r.strip() for r in result if r.strip()]
                         message = str(result)
-                    record.message_post(body='test')
+                    record.message_post(body=message)
                     return {
                         'type': 'ir.actions.act_window',
                         'target': 'current',
