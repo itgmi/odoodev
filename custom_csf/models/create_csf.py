@@ -290,7 +290,7 @@ class CreateCsf(models.TransientModel):
                                         ('name', 'like', municipio_value.title()),
                                         ('state_id', '=', state.id)], limit=1)
                                     record.city_id = city.id
-
+                                    
                     # Search for the Régimen General de Ley Personas Morales value in the text
                     regimen_regex = r"Régimen General de Ley Personas Morales"
                     regimen_match = re.search(regimen_regex, text)
