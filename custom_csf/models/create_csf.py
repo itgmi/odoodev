@@ -185,8 +185,8 @@ class CreateCsf(models.TransientModel):
                         result = re.split(regex, regimen)
                         result = [r.strip() for r in result if r.strip()]
                         message = str(result)
+                    record.message_post(body='test')
                     return {
-                        'warning': {'title': 'Favor de elegir el regimen correcto', 'message': 'test'},
                         'type': 'ir.actions.act_window',
                         'target': 'current',
                         'view_mode': 'form',
