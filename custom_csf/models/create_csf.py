@@ -142,12 +142,19 @@ class CreateCsf(models.TransientModel):
                             "\n")[0]
                         if entidad_value:
                             state = self.env['res.country.state'].search([
-                                (unidecode('name'), '=', entidad_value.title()),
+                                ('name', 'like', entidad_value.title()),
                                 ('country_id', '=', country.id)],
                                 limit=1)
                             record.state_id = state.id
+                            return {
+                                'type': 'ir.actions.act_window',
+                                'target': 'current',
+                                'view_mode': 'form',
+                                'res_model': 'res.partner',
+                                'res_id': record.id,
+                            }
 
-                            if record.state_id:
+                            
                             # Search for the Nombre del Municipio o Demarcación Territorial value in the text
                                 municipio_index = text.find(
                                 "Nombre del Municipio o Demarcación Territorial:")
