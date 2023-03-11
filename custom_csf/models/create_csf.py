@@ -187,7 +187,6 @@ class CreateCsf(models.TransientModel):
                         message = 'Los posibles regimenes son: \n'
                         for i in result:
                             message += i + '\n'
-                        message = str(result)
                     record.message_post(body=message)
                     return {
                         'type': 'ir.actions.act_window',
