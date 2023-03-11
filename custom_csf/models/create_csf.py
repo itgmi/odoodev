@@ -164,9 +164,16 @@ class CreateCsf(models.TransientModel):
                                     "\n")[0]
                             if municipio_value:
                                 city = self.env['res.city'].search([
-                                    ('name', 'ilike', municipio_value.title()),
+                                    ('name', 'like', municipio_value.title()),
                                     ('state_id', '=', state.id)], limit=1)
                                 record.city_id = city.id
+                                return {
+                                    'type': 'ir.actions.act_window',
+                                    'target': 'current',
+                                    'view_mode': 'form',
+                                    'res_model': 'res.partner',
+                                    'res_id': record.id,
+                                }
                     return {
                         'type': 'ir.actions.act_window',
                         'target': 'current',
