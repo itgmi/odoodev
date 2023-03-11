@@ -187,7 +187,7 @@ class CreateCsf(models.TransientModel):
                         message = str(result)
                     return {
                         'warning': {'title': 'Favor de elegir el regimen correcto',
-                                            'message': message}
+                                            'message': message},
                         'type': 'ir.actions.act_window',
                         'target': 'current',
                         'view_mode': 'form',
