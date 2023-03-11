@@ -24,7 +24,7 @@ class CreateCsf(models.TransientModel):
             raise ValidationError('Choose Valid File')
         else:
             country = self.env['res.country'].search([
-                ('name', '=', 'México')])
+                ('name', 'ilike', 'Mexico')])
             record = self.env['res.partner'].create({
                 'name': ' ',
                 'country_id': country.id,
@@ -131,6 +131,9 @@ class CreateCsf(models.TransientModel):
                         if col_value:
                             record.l10n_mx_edi_colony = col_value
 
+                    country = self.env['res.country'].search([
+                        ('name', 'ilike', 'Mexico')])
+
                     # Search for the Nombre de la Entidad Federativa value in the text
                     entidad_index = text.find("Nombre de la Entidad Federativa:")
                     if entidad_index != -1:
@@ -139,7 +142,7 @@ class CreateCsf(models.TransientModel):
                             "\n")[0]
                         if entidad_value:
                             state = self.env['res.country.state'].search([
-                                ('name', 'like', entidad_value),
+                                (unidecode('name'), '=', entidad_value.title()),
                                 ('country_id', '=', country.id)],
                                 limit=1)
                             record.state_id = state.id
@@ -250,6 +253,9 @@ class CreateCsf(models.TransientModel):
                         if colonia_value:
                             record.l10n_mx_edi_colony = colonia_value
 
+                    #country = self.env['res.country'].search([
+                    #    ('name', 'ilike', 'Mexico')])
+
                     # Search for the Nombre de la Entidad Federativa value in the text
                     entidad_index = text.find(
                         "Nombre de la Entidad Federativa:")
@@ -259,7 +265,7 @@ class CreateCsf(models.TransientModel):
                             "\n")[0]
                         if entidad_value:
                             state = self.env['res.country.state'].search([
-                                (unidecode('name'), '=', entidad_value.title()),
+                                ('name', '=', entidad_value.title()),
                                 ('country_id', '=', country.id)],
                                 limit=1)
                             record.state_id = state.id
