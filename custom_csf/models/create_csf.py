@@ -24,7 +24,7 @@ class CreateCsf(models.TransientModel):
             raise ValidationError('Choose Valid File')
         else:
             country = self.env['res.country'].search([
-                ('name', 'ilike', 'Mexico')])
+                ('name', '=', 'México')])
             record = self.env['res.partner'].create({
                 'name': ' ',
                 'country_id': country.id,
