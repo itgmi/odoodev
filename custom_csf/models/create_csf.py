@@ -150,7 +150,14 @@ class CreateCsf(models.TransientModel):
                                     ('name', '=', 'México'),
                                     ('country_id', '=', country.id)],
                                     limit=1)
-                            record.state_id = state.id
+                                record.state_id = state.id
+                            else:
+                                state = self.env['res.country.state'].search([
+                                    ('name', 'like', entidad_value.title()),
+                                    ('country_id', '=', country.id)],
+                                    limit=1)
+                                record.state_id = state.id    
+                            
                             
                     # Search for the Nombre del Municipio o Demarcación Territorial value in the text
                     municipio_index = text.find(
