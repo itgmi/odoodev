@@ -192,7 +192,19 @@ class CreateCsf(models.TransientModel):
                         'view_mode': 'form',
                         'res_model': 'res.partner',
                         'res_id': record.id,
-                        'context': {'default_tab': 'mx_edi', 'form_view_initial_mode': 'edit', 'form_view_ref': 'base.view_partner_form', '10n_mx_edi_fiscal_regime': 1},
+                        'context': {
+                            'default_tab': 'mx_edi',
+                            'form_view_initial_mode': 'edit',
+                            'form_view_ref': 'base.view_partner_form',
+                        },
+                        'flags': {
+                            'form': {'action_buttons': True, 'options': {'mode': 'edit'}},
+                        },
+                        'on_create': {
+                            'res.partner': {
+                            '10n_mx_edi_fiscal_regime': {'update': True},
+                           },
+                        },
                     }
                 
                 elif self.type == 'company':
