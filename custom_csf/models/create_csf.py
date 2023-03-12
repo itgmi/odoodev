@@ -184,7 +184,7 @@ class CreateCsf(models.TransientModel):
                         matches = re.findall(regex, regimen)
                         result = re.split(regex, regimen)
                         result = [r.strip() for r in result if r.strip()]
-                        message = "<div style='color: red;'>Es necesario elegir un Regimen:<br>" + "<br>".join([f"{i + 1}.- {elem}" for i, elem in enumerate(result)]) + "</dic>"
+                        message = "<div style='color: red;'>Es necesario elegir un Regimen: <br>" + "<br>".join([f"{i + 1}.- {elem}" for i, elem in enumerate(result)]) + "</dic>"
                     record.message_post(body=message, subtype_xmlid='mail.mt_comment')
                     return {
                         'type': 'ir.actions.act_window',
