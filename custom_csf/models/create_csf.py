@@ -192,7 +192,7 @@ class CreateCsf(models.TransientModel):
                         'view_mode': 'form',
                         'res_model': 'res.partner',
                         'res_id': record.id,
-                        'context': {'form_view_initial_mode': 'edit', 'focus': '10n_mx_edi_fiscal_regime'},
+                        'context': {'default_tab': 'mx_edi', 'form_view_initial_mode': 'edit', '10n_mx_edi_fiscal_regime':1},
                     }
                 
                 elif self.type == 'company':
