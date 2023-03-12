@@ -1,13 +1,9 @@
 from odoo import models, fields
-import os, PyPDF2
+import os, PyPDF2, re, base64
 from odoo.exceptions import ValidationError
-import base64
-import re
 from io import BytesIO
 from pdfminer.high_level import extract_text
 from unidecode import unidecode
-from odoo.http import redirect
-
 
 class CreateCsf(models.TransientModel):
     _name = 'create.csf'
