@@ -190,9 +190,9 @@ class CreateCsf(models.TransientModel):
                         'type': 'ir.actions.act_window',
                         'target': 'current',
                         'view_mode': 'form',
-                        'form_view_initial_mode': 'edit',
                         'res_model': 'res.partner',
                         'res_id': record.id,
+                        'context': {'form_view_initial_mode': 'edit', '10n_mx_edi_fiscal_regime': 1},
                     }
                 
                 elif self.type == 'company':
