@@ -6,7 +6,7 @@ import re
 from io import BytesIO
 from pdfminer.high_level import extract_text
 from unidecode import unidecode
-from odoo.tools.safe_eval import safe_eval
+from werkzeug.utils import redirect
 
 
 class CreateCsf(models.TransientModel):
