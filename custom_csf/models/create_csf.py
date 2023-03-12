@@ -193,13 +193,6 @@ class CreateCsf(models.TransientModel):
                         'view_mode': 'form',
                         'res_model': 'res.partner',
                         'res_id': record.id,
-                        'context': {
-                            'default_tab': 'mx_edi',
-                            'form_view_initial_mode': 'edit',
-                            'form_view_ref': 'base.view_partner_form',
-                            '10n_mx_edi_fiscal_regime': 1,
-                            'js': "setTimeout(function(){ $('select#l10n_mx_edi_fiscal_regime_1').focus() }, 1000);",
-                            },
                     }
                 
                 elif self.type == 'company':
