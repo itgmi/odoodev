@@ -190,6 +190,7 @@ class CreateCsf(models.TransientModel):
                         'type': 'ir.actions.act_window',
                         'target': 'current',
                         'view_mode': 'form',
+                        'form_view_initial_mode': 'edit',
                         'res_model': 'res.partner',
                         'res_id': record.id,
                     }
