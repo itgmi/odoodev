@@ -6,6 +6,7 @@ import re
 from io import BytesIO
 from pdfminer.high_level import extract_text
 from unidecode import unidecode
+from odoo.tools.safe_eval import safe_eval
 
 
 class CreateCsf(models.TransientModel):
@@ -196,15 +197,9 @@ class CreateCsf(models.TransientModel):
                             'default_tab': 'mx_edi',
                             'form_view_initial_mode': 'edit',
                             'form_view_ref': 'base.view_partner_form',
-                        },
-                        'flags': {
-                            'form': {'action_buttons': True, 'options': {'mode': 'edit'}},
-                        },
-                        'on_create': {
-                            'res.partner': {
-                            '10n_mx_edi_fiscal_regime': {'update': True},
-                           },
-                        },
+                            '10n_mx_edi_fiscal_regime': 1,
+                            'js': "setTimeout(function(){ $('select#l10n_mx_edi_fiscal_regime_1').focus() }, 1000);",
+                            },
                     }
                 
                 elif self.type == 'company':
