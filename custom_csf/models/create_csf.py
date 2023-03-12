@@ -193,7 +193,6 @@ class CreateCsf(models.TransientModel):
                         'view_mode': 'form',
                         'res_model': 'res.partner',
                         'res_id': record.id,
-                        'context': {'redir': f'/web#id={record.id}&model=res.partner&menu_id={menu_id}&action={action_id}&page=0&limit=80&view_type=form#l10n_mx_edi_fiscal_regime_1'},
                     }
                 
                 elif self.type == 'company':
