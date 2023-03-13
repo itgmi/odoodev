@@ -58,9 +58,10 @@ class SaleOrderLine(models.Model):
 
     @api.onchange('product_id')
     def _onchange_order_line(self):
-        today = fields.Datetime.today()
-        datetime_min = today + relativedelta(hours=00, minutes=00, seconds=00)
-        datetime_max = today + relativedelta(hours=23, minutes=59, seconds=59)
+        now = fields.Datetime.now()
+        start = now + relativedelta(days=-3)
+        datetime_min = start
+        datetime_max = now
         if self.product_id.id:
             product_id = self.product_id.id
             quoted_orders = self.env['sale.order.line'].search([
