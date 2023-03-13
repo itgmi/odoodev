@@ -19,8 +19,15 @@ class SaleOrderPricelistWizard(models.Model):
         if res_ids[0]:
             so_line = res_ids[0]
             so_line_obj = self.env['sale.order.line'].browse(so_line)
+            categ_id = so_line_obj.product_id.categ_id.id
             pricelist_list = []
-            pricelists = self.env['product.pricelist'].sudo().search([])
+            pricelists_items = self.env['product.pricelist.item'].sudo().search([
+                ('categ_id', '=', categ_id)])
+            lists = []
+            for rec in pricelists_items:
+                if rec.pricelist_id.id not in lists:
+                    lists.append(rec.pricelist_id.id)
+            pricelists = self.env['product.pricelist'].sudo().browse(lists)
             if pricelists:
                 for pricelist in pricelists:
                     price_unit =pricelist._compute_price_rule(so_line_obj.product_id, so_line_obj.product_uom_qty, date=date.today(), uom_id=so_line_obj.product_uom.id)[so_line_obj.product_id.id][0]
