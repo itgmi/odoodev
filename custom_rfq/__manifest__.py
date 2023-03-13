@@ -11,6 +11,7 @@
     'data': [
         'views/request.xml',
         'views/product.xml',
+        'views/settings.xml',
     ],
     'assets': {
        'web.assets_frontend': {

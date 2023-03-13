@@ -3,6 +3,8 @@
     <template id="product_quantity" inherit_id="website_sale.product"
               name="Select Quantity">
         <xpath expr="//div[@id='product_attributes_simple']" position="before">
+            <t t-set="rfq_button_products" t-value="request.env['ir.config_parameter'].sudo().get_param('custom_rfq.rfq_button_products')"/>
+            <t t-if="rfq_button_products">
             <t t-set="user" t-value="request.env.user.partner_id.active"/>
             <t t-if="user">
             <t t-if="website.id in product.request_website_ids.ids">
@@ -25,6 +27,7 @@
                     Request Quote
                     </button>
                 </t>
+            </t>
             </t>
         </xpath>
         <xpath expr="//div[@id='product_option_block']" position="replace">
@@ -137,8 +140,12 @@
      <template id="request_cart" inherit_id="website_sale.cart"
               name="Request Cart">
         <xpath expr="//div[@class='d-flex flex-column']" position="before">
+            <t t-set="rfq_button_cart" t-value="request.env['ir.config_parameter'].sudo().get_param('custom_rfq.rfq_button_cart')"/>
+            <t t-set="rfq_button_cart_website_id" t-value="request.env['res.config.settings'].sudo().rfq_button_cart_website_id()"/>
+            <t t-if="rfq_button_cart">
             <t t-set="user" t-value="request.env.user.partner_id.active"/>
             <t t-if="user">
+                <t t-if="website.id in rfq_button_cart_website_id">
             <button class="btn btn-primary mb32 request_quote_request_cart_user"
                     style="margin-left: 330px;background-color: darkblue;">
                 Request Quote
@@ -149,12 +156,16 @@
                 <input type="hidden"
                    class="website_request_cart_user"
                    t-att-value="website.id"/>
+                </t>
             </t>
             <t t-else="">
+                <t t-if="website.id in rfq_button_cart_website_id">
                 <button class="btn btn-primary mb32 request_quote_request_cart"
                     style="margin-left: 330px;background-color: darkblue;">
                 Request Quote
             </button>
+                </t>
+            </t>
             </t>
         </xpath>
          <xpath expr="//div[@id='oe_structure_website_sale_cart_1']" position="replace">

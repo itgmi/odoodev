@@ -100,17 +100,16 @@ class ProductTemp(models.Model):
             if rec.categ_id:
                 if rec.categ_id.complete_name:
                     name = rec.categ_id.complete_name
-                    match = re.search(r"(?<=Active)\s*/\s*(\w+(?:\s+\w+)*)", name)
-                    if match:
-                        siemens = match.group(1)
-                        rec.brand = siemens
-                    else:
-                        match = re.search(r"(?<=Obsoleto)\s*/\s*(\w+(?:\s+\w+)*)", name)
-                        if match:
-                            siemens = match.group(1)
-                            rec.brand = siemens
+                    small = name.split('/')
+                    length = len(small)
+                    if length >= 4:
+                        brand = small[3].strip()
+                        if brand:
+                            rec.brand = brand.upper()
                         else:
                             rec.brand = ''
+                    else:
+                        rec.brand = ''
 
     @api.depends('brand', 'default_code', 'long_default_code')
     def _name_perfect(self):
@@ -221,18 +220,16 @@ class Product(models.Model):
         if self.categ_id:
             if self.categ_id.complete_name:
                 name = self.categ_id.complete_name
-                match = re.search(r"(?<=Active)\s*/\s*(\w+(?:\s+\w+)*)", name)
-                if match:
-                    siemens = match.group(1)
-                    self.brand = siemens
-                else:
-                    match = re.search(r"(?<=Obsoleto)\s*/\s*(\w+(?:\s+\w+)*)",
-                                      name)
-                    if match:
-                        siemens = match.group(1)
-                        self.brand = siemens
+                small = name.split('/')
+                length = len(small)
+                if length >= 4:
+                    brand = small[3].strip()
+                    if brand:
+                        self.brand = brand.upper()
                     else:
                         self.brand = ''
+                else:
+                    self.brand = ''
 
     @api.onchange('brand')
     def _on_change_brand(self):
