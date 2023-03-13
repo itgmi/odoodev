@@ -8,6 +8,9 @@
             <xpath expr="//field[@name='order_line']//tree" position="inside">
                 <button name="pricelist_apply" type="object" string="Apply"/>
             </xpath>
+            <xpath expr="//field[@name='order_line']//form//field[@name='name']" position="after">
+                <button name="pricelist_apply" class="btn btn-primary" type="object" string="Apply"/>
+            </xpath>
         </field>
     </record>
 </odoo>
