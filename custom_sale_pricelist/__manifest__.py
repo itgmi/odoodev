@@ -11,6 +11,7 @@
     'data': [
         'views/price_list.xml',
         'views/partner.xml',
+        'views/sale_order.xml',
     ],
     'license': 'LGPL-3',
     'installable': True,
