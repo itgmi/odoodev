@@ -1,4 +1,4 @@
-from odoo import models, api, fields
+from odoo import models, api, fields, _
 from dateutil.relativedelta import relativedelta
 
 
@@ -76,44 +76,59 @@ class SaleOrderLine(models.Model):
                     count = 0
                     for rec in quoted_orders:
                         if count == 0:
+                            date = rec.create_date
+                            date_ = date.strftime('%Y-%m-%d %H:%M:%S')
                             quote_price_one = rec.price_unit,
                             quote_sale_one = rec.salesman_id.name,
                             quote_currency_one = rec.currency_id.name,
                             quote_customer_one = rec.order_partner_id.name,
+                            quote_time_one = date_,
                         else:
+                            date = rec.create_date
+                            date_ = date.strftime('%Y-%m-%d %H:%M:%S')
                             quote_price_two = rec.price_unit,
                             quote_sale_two = rec.salesman_id.name,
                             quote_currency_two = rec.currency_id.name,
                             quote_customer_two = rec.order_partner_id.name,
+                            quote_time_two = date_,
                         count += 1
-                    message = 'Price   :   ' + str(quote_price_one[0]) \
+                    message = _('Price   :   ') + str(quote_price_one[0]) \
                               + ' ' + str(quote_currency_one[0]) + \
-                              '                Sales Person   :   ' + \
+                              _('        Sales Person   :   ') + \
                               str(quote_sale_one[0]) + \
-                              '                Customer   :   ' + \
-                              str(quote_customer_one[0]) + '\n' + \
-                              'Price   :   ' + str(quote_price_two[0]) \
+                              _('        Customer   :   ') + \
+                              str(quote_customer_one[0]) + \
+                              _('      Date Time   :   ') + \
+                              quote_time_one[0] + '\n' + \
+                              _('Price   :   ') + str(quote_price_two[0]) \
                               + ' ' + str(quote_currency_two[0]) +  \
-                              '                Sales Person   :   ' + \
+                              _('        Sales Person   :   ') + \
                               str(quote_sale_two[0]) +  \
-                              '                Customer   :   ' + \
-                              str(quote_customer_two[0])
+                              _('        Customer   :   ') + \
+                              str(quote_customer_two[0]) + \
+                              _('      Date Time   :   ') + \
+                              quote_time_two[0]
                     if rec.product_id.product_tmpl_id.prices_warning:
-                        return {'warning': {'title': 'Quoted Prices',
+                        return {'warning': {'title': _('Quoted Prices'),
                                             'message': message}}
             elif int(quoted_count) == 1:
                 if quoted_orders:
                     for rec in quoted_orders:
+                        date = rec.create_date
+                        date_ = date.strftime('%Y-%m-%d %H:%M:%S')
                         quote_price_one = rec.price_unit,
                         quote_sale_one = rec.salesman_id.name,
                         quote_currency_one = rec.currency_id.name,
                         quote_customer_one = rec.order_partner_id.name,
-                    message = 'Price   :   ' + str(quote_price_one[0]) \
+                        quote_time_one = date_,
+                    message = _('Price   :   ') + str(quote_price_one[0]) \
                               + ' ' + str(quote_currency_one[0]) + \
-                              '                Sales Person   :   ' + \
+                              _('      Sales Person   :   ') + \
                               str(quote_sale_one[0]) + \
-                              '                Customer   :   ' + \
-                              str(quote_customer_one[0])
+                              _('      Customer   :   ') + \
+                              str(quote_customer_one[0]) + \
+                              _('      Date Time   :   ') + \
+                              quote_time_one[0]
                     if rec.product_id.product_tmpl_id.prices_warning:
-                        return {'warning': {'title': 'Quoted Prices',
+                        return {'warning': {'title': _('Quoted Prices'),
                                             'message': message}}
