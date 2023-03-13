@@ -1,8 +1,6 @@
 from odoo import models, fields
-import os
+import os, PyPDF2, base64, re
 from odoo.exceptions import ValidationError
-import base64
-import re
 from io import BytesIO
 from pdfminer.high_level import extract_text
 
@@ -30,17 +28,21 @@ class UploadCsf(models.TransientModel):
                         'datas': self.file,
                         'res_model': record._name,
                         'res_id': record.id,
-                        'mimetype': 'application/x-pdf'
+                        'mimetype': 'application/pdf'
                     })
                     record.message_post(body=self.file_name,
                                         attachment_ids=attachment.ids)
                     df_data = base64.b64decode(self.file)
                     pdf_data = BytesIO(df_data)
+                    pdf_reader = PyPDF2.PdfFileReader(pdf_data)
+                    textp = ''
                     text = extract_text(pdf_data)
                     # Define a regular expression to match the RFC value with 12 or 13 alphanumeric characters
                     rfc_regex = r'[A-Z]{3,4}\d{6}[A-Z0-9]{3,4}'
 
-                    # Search for RFC values in the text using the regular expression
+                    country = self.env['res.country'].search([
+                        ('name', 'ilike', 'Mexico')])
+                    record.country_id = country.id
                     rfc_matches = re.findall(rfc_regex, text)
 
                     # Print the first RFC value found, if any
@@ -59,25 +61,20 @@ class UploadCsf(models.TransientModel):
                         curp_value = curp_match.group(1)
                         record.l10n_mx_edi_curp = curp_value
 
-                    # Search for the Nombre Comercial value using regular expression
-                    nc_regex = r'Nombre Comercial:\s*(.*)'
+                    # Search for the Nombre value between "Registro Federal de Contribuyentes" and "Nombre, denominación o razón social"
+                    nc_regex = r'Registro Federal de Contribuyentes\s*(.*?)\s*Nombre, denominación o razón\s*social'
                     nc_match = re.search(nc_regex, text)
                     if nc_match:
                         nc_value = nc_match.group(1).strip()
-                        if 'Datos de Ubicación' not in nc_value and nc_value:
+                        if nc_value:
                             record.name = nc_value
-                        else:
-                            # Search for the Nombre value between "Registro Federal de Contribuyentes" and "Nombre, denominación o razón social"
-                            nombre_regex = r'Registro Federal de Contribuyentes\s*(.*?)\s*Nombre, denominación o razón\s*social'
-                            nombre_match = re.search(nombre_regex, text,
-                                                     re.DOTALL)
-
-                            if nombre_match:
-                                nombre_value = nombre_match.group(1).strip()
-                                if nombre_value:
-                                    record.name = nombre_value
-
-
+                    else:
+                        nombre_regex = r'Registro Federal de Contribuyentes\s*(.*?)\s*Nombre, denominación o razón\s*social'
+                        nombre_match = re.search(nombre_regex, text, re.DOTALL)
+                        if nombre_match:
+                            nc_value = nombre_match.group(1).strip().replace(
+                                '\n', ' ')
+                            record.name = nc_value
 
                     # Search for the Código Postal value
                     codigo_postal_regex = r'Código Postal:(\d{5})'
@@ -100,8 +97,9 @@ class UploadCsf(models.TransientModel):
                     num_ext_index = text.find("Número Exterior:")
                     if num_ext_index != -1:
                         num_ext_value = \
-                        text[num_ext_index + len("Número Exterior:"):].split(
-                            "\n")[0].strip()
+                            text[
+                            num_ext_index + len("Número Exterior:"):].split(
+                                "\n")[0].strip()
                         if num_ext_index:
                             record.street_number = num_ext_value
 
@@ -119,8 +117,8 @@ class UploadCsf(models.TransientModel):
                     nv_index = text.find("Nombre de Vialidad:")
                     if nv_index != -1:
                         nv_value = \
-                        text[nv_index + len("Nombre de Vialidad:"):].split(
-                            "\n")[0].strip()
+                            text[nv_index + len("Nombre de Vialidad:"):].split(
+                                "\n")[0].strip()
                         if nv_value:
                             record.street_name = nv_value
 
@@ -128,43 +126,64 @@ class UploadCsf(models.TransientModel):
                     col_index = text.find("Nombre de la Colonia:")
                     if col_index != -1:
                         col_value = \
-                        text[col_index + len("Nombre de la Colonia:"):].split(
-                            "\n")[0].strip()
+                            text[
+                            col_index + len("Nombre de la Colonia:"):].split(
+                                "\n")[0].strip()
                         if col_value:
                             record.l10n_mx_edi_colony = col_value
 
                     country = self.env['res.country'].search([
-                        ('name', 'ilike', 'Mexico')])
-                    record.country_id = country.id
+                        ('name', '=', 'México')])
 
                     # Search for the Nombre de la Entidad Federativa value in the text
-                    entidad_federativa_regex = r'Nombre de la Entidad Federativa:\s+(.*)'
-                    entidad_federativa_match = re.search(
-                        entidad_federativa_regex, text)
-                    if entidad_federativa_match:
-                        entidad_federativa_value = \
-                            entidad_federativa_match.group(1).strip().split(
-                                "\n")[
-                                0]
-                        if entidad_federativa_value:
-                            state = self.env['res.country.state'].search([
-                                ('name', 'ilike',
-                                 entidad_federativa_value.title())], limit=1)
-                            record.state_id = state.id
+                    entidad_index = text.find(
+                        "Nombre de la Entidad Federativa:")
+                    if entidad_index != -1:
+                        entidad_value = text[entidad_index + len(
+                            "Nombre de la Entidad Federativa:"):].strip().split(
+                            "\n")[0]
+                        if entidad_value:
+                            if entidad_value == 'MEXICO':
+                                state = self.env['res.country.state'].search([
+                                    ('name', '=', 'México'),
+                                    ('country_id', '=', country.id)],
+                                    limit=1)
+                                record.state_id = state.id
+                            else:
+                                state = self.env['res.country.state'].search([
+                                    ('name', 'like', entidad_value.title()),
+                                    ('country_id', '=', country.id)],
+                                    limit=1)
+                                record.state_id = state.id
 
                     # Search for the Nombre del Municipio o Demarcación Territorial value in the text
                     municipio_index = text.find(
                         "Nombre del Municipio o Demarcación Territorial:")
                     if municipio_index != -1:
                         municipio_value = text[municipio_index + len(
-                            "Nombre del Municipio o Demarcación Territorial:"):].split(
-                            "\n")[0].strip()
-                        if municipio_value:
-                            city = self.env['res.city'].search([
-                                ('name', 'ilike', municipio_value.title()),
-                                ('state_id', '=', state.id)], limit=1)
-                            record.city_id = city.id
-
+                            "Nombre del Municipio o Demarcación Territorial:"):].strip().split(
+                            "\n")[0]
+                    if municipio_value:
+                        city = self.env['res.city'].search([
+                            ('name', 'like', municipio_value.title()),
+                            ('state_id', '=', state.id)], limit=1)
+                        record.city_id = city.id
+                    for i in range(pdf_reader.getNumPages()):
+                        page = pdf_reader.getPage(i)
+                        textp += page.extractText()
+                    regimen_matches = re.findall(
+                        r'Régimen de[^\r\n]*(?=Obligaciones:)', textp)
+                    message = ''
+                    for regimen in regimen_matches:
+                        regex = r'\d{2}/\d{2}/\d{4}'
+                        matches = re.findall(regex, regimen)
+                        result = re.split(regex, regimen)
+                        result = [r.strip() for r in result if r.strip()]
+                        message = "<div style='color: red;'>Es necesario elegir un Regimen: <br> En la pestaña MX EDI <br> Elige entre los siguientes:<br>" + "<br>".join(
+                            [f"{i + 1}.- {elem}" for i, elem in
+                             enumerate(result)]) + "</dic>"
+                    record.message_post(body=message,
+                                        subtype_xmlid='mail.mt_comment')
                 elif record.company_type == 'company':
                     attachment = self.env['ir.attachment'].create({
                         'name': self.file_name,
@@ -172,7 +191,7 @@ class UploadCsf(models.TransientModel):
                         'datas': self.file,
                         'res_model': record._name,
                         'res_id': record.id,
-                        'mimetype': 'application/x-pdf'
+                        'mimetype': 'application/pdf'
                     })
                     record.message_post(body=self.file_name,
                                       attachment_ids=attachment.ids)
@@ -183,6 +202,10 @@ class UploadCsf(models.TransientModel):
 
                     # Search for RFC values in the text using the regular expression
                     rfc_matches = re.findall(rfc_regex, text)
+
+                    country = self.env['res.country'].search([
+                        ('name', 'ilike', 'Mexico')])
+                    record.country_id = country.id
 
                     # Print the first RFC value found, if any
                     if rfc_matches:
@@ -206,13 +229,13 @@ class UploadCsf(models.TransientModel):
                         regimen_value = text[regimen_index + len(
                             "Régimen Capital:"):].strip().split("\n")[0]
 
-
                     # Search for the Código Postal value in the text
                     cp_index = text.find("Código Postal:")
                     if cp_index != -1:
                         cp_value = \
-                        text[cp_index + len("Código Postal:"):].strip().split(
-                            "\n")[0]
+                            text[
+                            cp_index + len("Código Postal:"):].strip().split(
+                                "\n")[0]
                         if cp_value:
                             record.zip = cp_value
 
@@ -251,8 +274,7 @@ class UploadCsf(models.TransientModel):
                             record.l10n_mx_edi_colony = colonia_value
 
                     country = self.env['res.country'].search([
-                        ('name', 'ilike', 'Mexico')])
-                    record.country_id = country.id
+                        ('name', '=', 'México')])
 
                     # Search for the Nombre de la Entidad Federativa value in the text
                     entidad_index = text.find(
@@ -262,9 +284,18 @@ class UploadCsf(models.TransientModel):
                             "Nombre de la Entidad Federativa:"):].strip().split(
                             "\n")[0]
                         if entidad_value:
-                            state = self.env['res.country.state'].search([
-                                ('name', 'ilike', entidad_value.title())], limit=1)
-                            record.state_id = state.id
+                            if entidad_value == 'MEXICO':
+                                state = self.env['res.country.state'].search([
+                                    ('name', '=', 'México'),
+                                    ('country_id', '=', country.id)],
+                                    limit=1)
+                                record.state_id = state.id
+                            else:
+                                state = self.env['res.country.state'].search([
+                                    ('name', 'like', entidad_value.title()),
+                                    ('country_id', '=', country.id)],
+                                    limit=1)
+                                record.state_id = state.id
 
                     # Search for the Nombre del Municipio o Demarcación Territorial value in the text
                     municipio_index = text.find(
@@ -273,11 +304,11 @@ class UploadCsf(models.TransientModel):
                         municipio_value = text[municipio_index + len(
                             "Nombre del Municipio o Demarcación Territorial:"):].strip().split(
                             "\n")[0]
-                        if municipio_value:
-                            city = self.env['res.city'].search([
-                                ('name', 'ilike', municipio_value.title()),
-                                ('state_id', '=', state.id)], limit=1)
-                            record.city_id = city.id
+                    if municipio_value:
+                        city = self.env['res.city'].search([
+                            ('name', 'like', municipio_value.title()),
+                            ('state_id', '=', state.id)], limit=1)
+                        record.city_id = city.id
 
                     # Search for the Régimen General de Ley Personas Morales value in the text
                     regimen_regex = r"Régimen General de Ley Personas Morales"

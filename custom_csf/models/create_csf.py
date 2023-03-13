@@ -3,7 +3,7 @@ import os, PyPDF2, re, base64
 from odoo.exceptions import ValidationError
 from io import BytesIO
 from pdfminer.high_level import extract_text
-from unidecode import unidecode
+
 
 class CreateCsf(models.TransientModel):
     _name = 'create.csf'
@@ -157,9 +157,9 @@ class CreateCsf(models.TransientModel):
                                     ('name', 'like', entidad_value.title()),
                                     ('country_id', '=', country.id)],
                                     limit=1)
-                                record.state_id = state.id    
-                            
-                            
+                                record.state_id = state.id
+
+
                     # Search for the Nombre del Municipio o Demarcación Territorial value in the text
                     municipio_index = text.find(
                         "Nombre del Municipio o Demarcación Territorial:")
@@ -176,6 +176,7 @@ class CreateCsf(models.TransientModel):
                         page = pdf_reader.getPage(i)
                         textp += page.extractText()
                     regimen_matches = re.findall(r'Régimen de[^\r\n]*(?=Obligaciones:)', textp)
+                    message = ''
                     for regimen in regimen_matches:
                         regex = r'\d{2}/\d{2}/\d{4}'
                         matches = re.findall(regex, regimen)
@@ -190,7 +191,7 @@ class CreateCsf(models.TransientModel):
                         'res_model': 'res.partner',
                         'res_id': record.id,
                     }
-                
+
                 elif self.type == 'company':
                     record.company_type = 'company'
                     attachment = self.env['ir.attachment'].create({
@@ -280,7 +281,7 @@ class CreateCsf(models.TransientModel):
                     country = self.env['res.country'].search([
                         ('name', '=', 'México')])
 
-     
+
                     # Search for the Nombre de la Entidad Federativa value in the text
                     entidad_index = text.find("Nombre de la Entidad Federativa:")
                     if entidad_index != -1:
@@ -299,9 +300,9 @@ class CreateCsf(models.TransientModel):
                                     ('name', 'like', entidad_value.title()),
                                     ('country_id', '=', country.id)],
                                     limit=1)
-                                record.state_id = state.id    
-                            
-                            
+                                record.state_id = state.id
+
+
                     # Search for the Nombre del Municipio o Demarcación Territorial value in the text
                     municipio_index = text.find(
                         "Nombre del Municipio o Demarcación Territorial:")
