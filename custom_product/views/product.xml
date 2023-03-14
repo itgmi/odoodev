@@ -6,6 +6,11 @@
         <field name="inherit_id"
                ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml">
+            <style>
+                .cust_marg{
+                    margin-left: 20px;
+                }
+            </style>
             <xpath expr="//label[@for='purchase_ok']" position="after">
                 <button name="product_url_open" type="object" string="Search" class="btn btn-primary cust_marg"/>
             </xpath>
@@ -74,6 +79,11 @@
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
+            <style>
+                .cust_marg{
+                    margin-left: 20px;
+                }
+            </style>
             <xpath expr="//label[@for='purchase_ok']" position="after">
                 <button name="product_url_open_pd" type="object" string="Search" class="btn btn-primary cust_marg"/>
             </xpath>
