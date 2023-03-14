@@ -20,7 +20,8 @@ class AvailableStock(models.Model):
         ("MXN", "MXN"),
         ("USD", "USD"),
     ], 'Currency', default='MXN')
-    mer_currency_id = fields.Many2one('res.currency')
+    mer_currency_id = fields.Many2one('res.currency', 'Currency',
+                                      related='product_id.gr_currency_id')
     mer_shipping_method = fields.Many2one('delivery.carrier')
     mer_condition = fields.Selection([
         ("new", "New"),
@@ -54,11 +55,12 @@ class AvailableStock(models.Model):
         ("meses", "meses"),
         ("años", "años")
     ], 'Warranty Uom', default='meses')
-    mer_brand = fields.Char('Brand')
+    mer_brand = fields.Char('Brand', related='product_id.brand')
     mer_mlm = fields.Char('Mlm')
     mer_category = fields.Char('Category')
     sku = fields.Char(related='product_id.default_code', readonly=False)
     model = fields.Char(related='product_id.default_code', readonly=False)
+    image_1928 = fields.Binary(related='product_id.image_1920')
 
     def sample_function(self):
         stock = self.env['stock.quant'].search([])
@@ -82,7 +84,7 @@ class AvailableStock(models.Model):
                         'free_qty': recs.available_quantity,
                     })
         return {
-            'name': 'Available Quantity',
+            'name': 'MercadoLibre',
             'view_type': 'tree',
             'view_mode': 'tree,form',
             'res_model': 'available.stock',
