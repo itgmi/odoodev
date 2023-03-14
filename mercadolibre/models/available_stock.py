@@ -61,6 +61,7 @@ class AvailableStock(models.Model):
     sku = fields.Char(related='product_id.default_code', readonly=False)
     model = fields.Char(related='product_id.default_code', readonly=False)
     image_1928 = fields.Binary(related='product_id.image_1920')
+    company_id = fields.Many2one('res.company', default=lambda self: self.env.company.id)
 
     def sample_function(self):
         stock = self.env['stock.quant'].search([])

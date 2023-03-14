@@ -15,6 +15,7 @@ class Company(models.Model):
     code = fields.Char()
     response_categories = fields.Text()
     price_list_id = fields.Many2one('product.pricelist')
+    mlmark_image = fields.Binary()
 
     def authenticate(self):
         url = 'https://auth.mercadolibre.com.mx/authorization?response_type=code&client_id=' + self.api_id + '&redirect_uri=' + self.redirect_uri
