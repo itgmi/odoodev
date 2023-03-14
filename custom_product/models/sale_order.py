@@ -30,9 +30,7 @@ class SaleOrder(models.Model):
         store=True, readonly=False, required=True, precompute=True,
         states=LOCKED_FIELD_STATES,
         domain="['|', ('company_id', '=', False), "
-               "('company_id', '=', company_id), '|',"
-               "('parent_id', '=', partner_id), '&',  "
-               "('parent_id', '=', parent_id), "
+               "('company_id', '=', company_id),"
                "('parent_id', '!=', False), "
                "('type', '=', 'delivery')]")
     partner_id = fields.Many2one(
