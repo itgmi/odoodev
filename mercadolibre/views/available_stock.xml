@@ -48,8 +48,8 @@
                             <field name="mer_warranty_uom"/>
                             <field name="mer_brand"/>
                             <field name="mer_mlm"/>
-                            <field name="sku"/>
-                            <field name="model"/>
+                            <field name="sku" string="SKU"/>
+                            <field name="model" string="Model"/>
                         </group>
                     </group>
                 </sheet>

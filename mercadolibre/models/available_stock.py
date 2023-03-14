@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class AvailableStock(models.Model):
@@ -15,7 +15,7 @@ class AvailableStock(models.Model):
     mer_upc_ = fields.Char('UPC')
     mer_upc = fields.Selection([])
     mer_available_quantity = fields.Float('Available Quantity')
-    mer_price = fields.Float('Price')
+    mer_price = fields.Float('Price', compute='calculate_price', store=True)
     mer_currency = fields.Selection([
         ("MXN", "MXN"),
         ("USD", "USD"),
@@ -90,3 +90,11 @@ class AvailableStock(models.Model):
             'res_model': 'available.stock',
             'type': 'ir.actions.act_window',
         }
+
+    @api.depends('product_id', 'product_id.lst_price')
+    def calculate_price(self):
+        for rec in self:
+            if rec.product_id.lst_price:
+                rec.mer_price = rec.product_id.lst_price
+            else:
+                rec.mer_price = 0

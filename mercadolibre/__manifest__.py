@@ -1,6 +1,6 @@
 {
     'name': 'MercadoLibre',
-    'version': '16.0.1.4.7',
+    'version': '16.0.1.5.7',
     'summary': """MercadoLibre""",
     'description': 'MercadoLibre',
     'category': '',

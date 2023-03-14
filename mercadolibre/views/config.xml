@@ -19,6 +19,7 @@
                         <field name="access_token"/>
                         <field name="refresh_token"/>
                         <field name="code"/>
+                        <field name="price_list_id"/>
                     </group>
                     <group>
                         <field name="response_categories"/>
