@@ -16,8 +16,16 @@
         <field name="model">available.stock</field>
         <field name="arch" type="xml">
             <form create="0">
+                <style>
+                    .button_change{
+                        margin-left: 93%;
+                    }
+                </style>
                 <sheet>
-                    <field name="image_1928" widget="image" class="oe_avatar"/>
+                    <button type="object" name="change_image" string="Apply" class="btn btn-secondary button_change"/>
+                    <field name="image_show" invisible="1"/>
+                    <field name="image_1928" widget="image" class="oe_avatar" attrs="{'invisible':[('image_show','=',True)]}"/>
+                    <field name="image_1929" widget="image" class="oe_avatar" attrs="{'invisible':[('image_show','=',False)]}"/>
                     <div class="oe_title">
                         <label for="name" string="Product Name"/>
                         <h1>

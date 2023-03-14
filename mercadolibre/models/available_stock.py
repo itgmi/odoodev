@@ -1,4 +1,7 @@
 from odoo import models, fields, api
+import base64
+from io import BytesIO
+from PIL import Image
 
 
 class AvailableStock(models.Model):
@@ -61,7 +64,29 @@ class AvailableStock(models.Model):
     sku = fields.Char(related='product_id.default_code', readonly=False)
     model = fields.Char(related='product_id.default_code', readonly=False)
     image_1928 = fields.Binary(related='product_id.image_1920')
+    image_1929 = fields.Binary()
     company_id = fields.Many2one('res.company', default=lambda self: self.env.company.id)
+    image_show = fields.Boolean(default=False)
+
+    def change_image(self):
+        if self.company_id.mlmark_image and self.image_1928:
+            encoded_img2 = self.company_id.mlmark_image
+            encoded_img1 = self.image_1928
+            decoded_img1 = base64.b64decode(encoded_img1)
+            decoded_img2 = base64.b64decode(encoded_img2)
+            img1 = Image.open(BytesIO(decoded_img1))
+            img2 = Image.open(BytesIO(decoded_img2))
+            img2_resized = img2.resize((160, 112))
+            img2_mask = img2_resized.convert('L')
+            img2_mask = img2_mask.point(lambda x: 255 if x > 0 else 0,
+                                        '1')
+            img1.paste(img2_resized, (0, 0), mask=img2_mask)
+            buffered = BytesIO()
+            img1 = img1.convert('RGB')
+            img1.save(buffered, format='JPEG')
+            img_str = base64.b64encode(buffered.getvalue()).decode('utf-8')
+            self.image_1929 = img_str
+            self.image_show = True
 
     def sample_function(self):
         stock = self.env['stock.quant'].search([])
