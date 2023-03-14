@@ -11,6 +11,55 @@
             </tree>
         </field>
     </record>
+    <record id="available_stock_model_form" model="ir.ui.view">
+        <field name="name">available stock</field>
+        <field name="model">available.stock</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Product Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field class="text-break" name="name" />
+                            </div>
+                        </h1>
+                    </div>
+                <group>
+                        <group>
+                            <field name="mer_title"/>
+                            <field name="mer_category"/>
+                            <field name="mer_images"/>
+                            <field name="mer_upc_"/>
+                            <field name="mer_available_quantity"/>
+                            <field name="mer_price"/>
+                            <field name="mer_currency"/>
+                            <field name="mer_condition"/>
+                            <field name="mer_listing_type"/>
+                            <field name="mer_description"/>
+                        </group>
+                        <group>
+                            <field name="mer_shipping_method"/>
+                            <field name="mer_shipping_cost"/>
+                            <field name="mer_local_pickup"/>
+                            <field name="mer_warranty_type"/>
+                            <field name="mer_warranty_time"/>
+                            <field name="mer_warranty_uom"/>
+                            <field name="mer_brand"/>
+                            <field name="mer_mlm"/>
+                            <field name="sku"/>
+                            <field name="model"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
     <record id="available_stock_model_action_server" model="ir.actions.server">
         <field name="name">MercadoLibre</field>
         <field name="model_id" ref="mercadolibre.model_available_stock"/>

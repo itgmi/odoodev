@@ -1,13 +1,14 @@
 {
     'name': 'MercadoLibre',
-    'version': '16.0.1.2.7',
+    'version': '16.0.1.3.7',
     'summary': """MercadoLibre""",
     'description': 'MercadoLibre',
     'category': '',
     'author': '',
     'company': '',
     'website': "",
-    'depends': ['base', 'product', 'stock', 'delivery', 'custom_product'],
+    'depends': ['base', 'product', 'stock', 'delivery', 'custom_product',
+                'mail'],
     'data': [
         'security/ir.model.access.csv',
         'views/config.xml',
