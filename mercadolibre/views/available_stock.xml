@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="available_stock_model_tree" model="ir.ui.view">
+        <field name="name">available_stock</field>
+        <field name="model">available.stock</field>
+        <field name="arch" type="xml">
+            <tree create="false" delete="false">
+                <field name="product_id"/>
+                <field name="location_id" invisible="1"/>
+                <field name="free_qty"/>
+            </tree>
+        </field>
+    </record>
+    <record id="available_stock_model_action_server" model="ir.actions.server">
+        <field name="name">MercadoLibre</field>
+        <field name="model_id" ref="mercadolibre.model_available_stock"/>
+        <field name="state">code</field>
+        <field name="code">action = model.sample_function()</field>
+    </record>
+    <menuitem id="available_stock_gr"
+              name="MercadoLibre"
+              parent="sale.product_menu_catalog"
+              sequence="120"
+              action="available_stock_model_action_server"/>
+</odoo>

@@ -1,6 +1,6 @@
 {
     'name': 'MercadoLibre',
-    'version': '16.0.1.0.7',
+    'version': '16.0.1.2.7',
     'summary': """MercadoLibre""",
     'description': 'MercadoLibre',
     'category': '',
@@ -9,10 +9,12 @@
     'website': "",
     'depends': ['base', 'product', 'stock', 'delivery', 'custom_product'],
     'data': [
+        'security/ir.model.access.csv',
         'views/config.xml',
         'data/refresh_action.xml',
         'views/cron.xml',
         'views/product.xml',
+        'views/available_stock.xml',
     ],
     'license': 'LGPL-3',
     'installable': True,
