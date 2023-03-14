@@ -3,6 +3,7 @@ import base64
 from io import BytesIO
 from PIL import Image
 import requests
+from odoo.http import request
 
 
 class AvailableStock(models.Model):
@@ -114,6 +115,18 @@ class AvailableStock(models.Model):
             img_str = base64.b64encode(buffered.getvalue()).decode('utf-8')
             self.image_1929 = img_str
             self.image_show = True
+            url = f"{request.httprequest.host_url[:-1]}"
+            attachment = self.env['ir.attachment'].create({
+                'name': str(self.id),
+                'type': 'binary',
+                'public': True,
+                'datas': self.image_1929,
+                'res_model': self._name,
+                'res_id': self.id,
+            })
+            public_url = '{}/web/image/ir.attachment/{}/datas'.format(url,
+                                                                      attachment.id)
+            self.mer_images = public_url
 
     def sample_function(self):
         stock = self.env['stock.quant'].search([])
