@@ -18,29 +18,46 @@
             <form create="0">
                 <style>
                     .button_change{
-                        margin-left: 93%;
+                    margin-left: 45%;
                     }
+<!--                    .button_validate{-->
+<!--                    margin-left: 92.5%;-->
+<!--                    }-->
                 </style>
                 <sheet>
-                    <button type="object" name="change_image" string="Apply" class="btn btn-secondary button_change"/>
-                    <field name="image_show" invisible="1"/>
-                    <field name="image_1928" widget="image" class="oe_avatar" attrs="{'invisible':[('image_show','=',True)]}"/>
-                    <field name="image_1929" widget="image" class="oe_avatar" attrs="{'invisible':[('image_show','=',False)]}"/>
-                    <div class="oe_title">
-                        <label for="name" string="Product Name"/>
-                        <h1>
-                            <div class="d-flex">
-                                <field class="text-break" name="name" />
+                    <div class="o_row">
+                        <div class="oe_title">
+                            <label for="name" string="Product Name"/>
+                            <h1>
+                                <div class="d-flex">
+                                    <field class="text-break" name="name"/>
+                                </div>
+                            </h1>
+                        </div>
+                        <div class="o_col button_change">
+                        <button type="object" name="change_image"
+                                string="Apply"
+                                class="btn btn-secondary button_change"/>
+                        <field name="image_show" invisible="1"/>
+                        <field name="image_1928" widget="image"
+                               class="oe_avatar"
+                               attrs="{'invisible':[('image_show','=',True)]}"/>
+                        <field name="image_1929" widget="image"
+                               class="oe_avatar"
+                               attrs="{'invisible':[('image_show','=',False)]}"/>
+                        <button type="object" name="validate_mercado"
+                                string="Validate"
+                                class="btn btn-primary button_validate"/>
                             </div>
-                        </h1>
                     </div>
-                <group>
+                    <group>
                         <group>
                             <field name="mer_title"/>
                             <field name="mer_category"/>
                             <field name="mer_images"/>
                             <field name="mer_upc_"/>
-                            <field name="free_qty" string="Available Quantity"/>
+                            <field name="free_qty"
+                                   string="Available Quantity"/>
                             <field name="mer_price"/>
                             <field name="mer_currency_id"/>
                             <field name="mer_condition"/>

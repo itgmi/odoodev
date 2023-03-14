@@ -2,6 +2,7 @@ from odoo import models, fields, api
 import base64
 from io import BytesIO
 from PIL import Image
+import requests
 
 
 class AvailableStock(models.Model):
@@ -67,6 +68,32 @@ class AvailableStock(models.Model):
     image_1929 = fields.Binary()
     company_id = fields.Many2one('res.company', default=lambda self: self.env.company.id)
     image_show = fields.Boolean(default=False)
+
+    def validate_mercado(self):
+        company = self.env.company
+        access_token = company.access_token
+        payload = {}
+        headers = {
+            "Authorization": f"Bearer {access_token}"
+        }
+        url = f"https://api.mercadolibre.com/sites/MLM/domain_discovery/search?limit=1&q={self.product_id.name}"
+        if self.product_id:
+            response = requests.get(url, headers=headers, data=payload)
+            if response.status_code == 200:
+                for rec in response.json():
+                    self.mer_category = rec.get('category_id')
+                self.mer_title = self.product_id.name
+                self.mer_upc_ = self.product_id.barcode
+                self.mer_description = self.product_id.description_sale
+                self.mer_images = self.product_id.image_url
+                self.mer_currency = 'MXN'
+                self.mer_warranty_uom = 'meses'
+                self.mer_warranty_time = 6
+                self.mer_warranty_type = 'Garantía del vendedor'
+                self.mer_local_pickup = 'Acepto'
+                self.mer_shipping_cost = 'A cargo del comprador'
+                self.mer_shipping_method = 'Mercado Envíos'
+                self.mer_listing_type = 'classic'
 
     def change_image(self):
         if self.company_id.mlmark_image and self.image_1928:
